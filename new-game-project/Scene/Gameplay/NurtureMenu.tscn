@@ -1,0 +1,213 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2smjqv7l1yx1"]
+
+[ext_resource type="Texture2D" uid="uid://d2q16jgwvmhwp" path="res://Asset/Sprite/Button2.png" id="1_4pwep"]
+[ext_resource type="Script" uid="uid://cbx5mpq6juiqj" path="res://Scripts/NurtureMenu/NurtureMenu.gd" id="1_53af3"]
+[ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="2_53af3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwrfk"]
+bg_color = Color(0.117647, 0.117647, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.0313726, 0.819608, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
+[node name="NurtureMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -271.0
+offset_top = -101.0
+offset_right = 279.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.985, 0.53)
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="NurtureMenu" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fwrfk")
+script = ExtResource("1_53af3")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/NurtureMenu"]
+layout_mode = 0
+offset_left = -0.710655
+offset_top = -8.67926
+offset_right = 579.289
+offset_bottom = 41.3207
+scale = Vector2(1, 1.83)
+theme_override_constants/h_separation = 10
+columns = 5
+
+[node name="TextureButton1" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton1/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4pwep")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton1/VBoxContainer/TextureRect"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 61.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("2_53af3")
+theme_override_font_sizes/font_size = 8
+text = "Ajak
+berbincang"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton1/VBoxContainer/TextureRect"]
+visible = false
+layout_mode = 2
+offset_left = 3.0
+offset_top = 36.0
+offset_right = 502.0
+offset_bottom = 139.0
+theme_override_fonts/font = ExtResource("2_53af3")
+theme_override_font_sizes/font_size = 8
+text = "test"
+horizontal_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton2/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4pwep")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton2/VBoxContainer/TextureRect"]
+layout_mode = 2
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("2_53af3")
+theme_override_font_sizes/font_size = 8
+text = "Beri
+hadiah"
+horizontal_alignment = 1
+
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton3/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4pwep")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton3/VBoxContainer/TextureRect"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 61.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("2_53af3")
+theme_override_font_sizes/font_size = 8
+text = "Beri
+Perhatian"
+horizontal_alignment = 1
+
+[node name="TextureButton4" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton4/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4pwep")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton4/VBoxContainer/TextureRect"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 61.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("2_53af3")
+theme_override_font_sizes/font_size = 8
+text = "Suruh
+Belajar"
+horizontal_alignment = 1
+
+[node name="TextureButton5" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton5"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton5/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4pwep")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton5/VBoxContainer/TextureRect"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 53.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("2_53af3")
+theme_override_font_sizes/font_size = 8
+text = "Bersih
+Bersih"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="MarginContainer/NurtureMenu/GridContainer"]
+layout_mode = 2
+text = "Close
+"
