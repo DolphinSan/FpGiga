@@ -154,22 +154,22 @@ theme_override_font_sizes/font_size = 8
 text = "test"
 horizontal_alignment = 1
 
-[node name="TextureButton3" type="TextureButton" parent="UI/MarginContainer/ActionMenu/GridContainer"]
+[node name="recreation" type="TextureButton" parent="UI/MarginContainer/ActionMenu/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/ActionMenu/GridContainer/TextureButton3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/ActionMenu/GridContainer/recreation"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/ActionMenu/GridContainer/TextureButton3/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/ActionMenu/GridContainer/recreation/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_fvp02")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="UI/MarginContainer/ActionMenu/GridContainer/TextureButton3/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="UI/MarginContainer/ActionMenu/GridContainer/recreation/VBoxContainer/TextureRect"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 4.0
@@ -180,22 +180,22 @@ theme_override_font_sizes/font_size = 8
 text = "Recreation"
 horizontal_alignment = 1
 
-[node name="TextureButton4" type="TextureButton" parent="UI/MarginContainer/ActionMenu/GridContainer"]
+[node name="infirmary" type="TextureButton" parent="UI/MarginContainer/ActionMenu/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/ActionMenu/GridContainer/TextureButton4"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/ActionMenu/GridContainer/infirmary"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/ActionMenu/GridContainer/TextureButton4/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/ActionMenu/GridContainer/infirmary/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_fvp02")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="UI/MarginContainer/ActionMenu/GridContainer/TextureButton4/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="UI/MarginContainer/ActionMenu/GridContainer/infirmary/VBoxContainer/TextureRect"]
 layout_mode = 2
 offset_left = 6.0
 offset_top = 4.0
@@ -206,22 +206,22 @@ theme_override_font_sizes/font_size = 8
 text = "Infirmary "
 horizontal_alignment = 1
 
-[node name="TextureButton5" type="TextureButton" parent="UI/MarginContainer/ActionMenu/GridContainer"]
+[node name="lomba" type="TextureButton" parent="UI/MarginContainer/ActionMenu/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/ActionMenu/GridContainer/TextureButton5"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/ActionMenu/GridContainer/lomba"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/ActionMenu/GridContainer/TextureButton5/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/ActionMenu/GridContainer/lomba/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_fvp02")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="UI/MarginContainer/ActionMenu/GridContainer/TextureButton5/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="UI/MarginContainer/ActionMenu/GridContainer/lomba/VBoxContainer/TextureRect"]
 layout_mode = 2
 offset_left = 13.0
 offset_top = 4.0
@@ -250,6 +250,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ppbdf")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 

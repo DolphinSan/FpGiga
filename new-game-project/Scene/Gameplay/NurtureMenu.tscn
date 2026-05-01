@@ -60,22 +60,22 @@ scale = Vector2(1, 1.83)
 theme_override_constants/h_separation = 10
 columns = 5
 
-[node name="TextureButton1" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+[node name="AjakBerbicara" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/AjakBerbicara"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton1/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/AjakBerbicara/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_4pwep")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton1/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/AjakBerbicara/VBoxContainer/TextureRect"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 6.0
@@ -87,7 +87,7 @@ text = "Ajak
 berbincang"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton1/VBoxContainer/TextureRect"]
+[node name="Label2" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/AjakBerbicara/VBoxContainer/TextureRect"]
 visible = false
 layout_mode = 2
 offset_left = 3.0
@@ -99,22 +99,22 @@ theme_override_font_sizes/font_size = 8
 text = "test"
 horizontal_alignment = 1
 
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+[node name="BeriHadiah" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/BeriHadiah"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton2/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/BeriHadiah/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_4pwep")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton2/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/BeriHadiah/VBoxContainer/TextureRect"]
 layout_mode = 2
 offset_left = 14.0
 offset_top = 6.0
@@ -126,22 +126,22 @@ text = "Beri
 hadiah"
 horizontal_alignment = 1
 
-[node name="TextureButton3" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+[node name="BeriPerhatian" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/BeriPerhatian"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton3/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/BeriPerhatian/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_4pwep")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton3/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/BeriPerhatian/VBoxContainer/TextureRect"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 6.0
@@ -153,22 +153,22 @@ text = "Beri
 Perhatian"
 horizontal_alignment = 1
 
-[node name="TextureButton4" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+[node name="SuruhBelajar" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton4"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/SuruhBelajar"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton4/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/SuruhBelajar/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_4pwep")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton4/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/SuruhBelajar/VBoxContainer/TextureRect"]
 layout_mode = 2
 offset_left = 6.0
 offset_top = 6.0
@@ -180,22 +180,22 @@ text = "Suruh
 Belajar"
 horizontal_alignment = 1
 
-[node name="TextureButton5" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
+[node name="BersihBersih" type="TextureButton" parent="MarginContainer/NurtureMenu/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton5"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NurtureMenu/GridContainer/BersihBersih"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton5/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NurtureMenu/GridContainer/BersihBersih/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_4pwep")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/TextureButton5/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/GridContainer/BersihBersih/VBoxContainer/TextureRect"]
 layout_mode = 2
 offset_left = 13.0
 offset_top = 6.0
@@ -206,8 +206,3 @@ theme_override_font_sizes/font_size = 8
 text = "Bersih
 Bersih"
 horizontal_alignment = 1
-
-[node name="CloseButton" type="Button" parent="MarginContainer/NurtureMenu/GridContainer"]
-layout_mode = 2
-text = "Close
-"
