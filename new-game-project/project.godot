@@ -23,6 +23,7 @@ ActionManager="*res://AutoLoad/ActionManager.gd"
 LombaManager="*res://AutoLoad/LombaManager.gd"
 SaveSystem="*res://AutoLoad/SaveSystem.gd"
 TimeManager="*res://AutoLoad/TimeManager.gd"
+RandomEventManager="*res://AutoLoad/RandomEventManager.gd"
 
 [display]
 

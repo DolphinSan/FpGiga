@@ -206,3 +206,20 @@ theme_override_font_sizes/font_size = 8
 text = "Bersih
 Bersih"
 horizontal_alignment = 1
+
+[node name="DescriptionPanel" type="MarginContainer" parent="MarginContainer/NurtureMenu"]
+offset_left = -0.710657
+offset_top = 64.9057
+offset_right = 39.2893
+offset_bottom = 104.906
+
+[node name="DescriptionText" type="VBoxContainer" parent="MarginContainer/NurtureMenu/DescriptionPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/NurtureMenu/DescriptionPanel/DescriptionText"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_53af3")
+
+[node name="Label2" type="Label" parent="MarginContainer/NurtureMenu/DescriptionPanel/DescriptionText"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_53af3")

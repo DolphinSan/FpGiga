@@ -32,21 +32,20 @@ func _set_latar(waktu: int, ap: int) -> void:
 
 
 func _advance_hari() -> void:
-	ActionManager.evaluate_daily_streaks()   # cek efek buruk sebelum hari berganti
+	ActionManager.evaluate_daily_streaks()
 
 	GameState.hari += 1
 	if GameState.hari > GameState.hari_max:
 		_advance_fase()
 		return
 
-	var dow := ((GameState.hari - 1) % 7) + 1   # 1=Senin … 7=Minggu
+	var dow := ((GameState.hari - 1) % 7) + 1
 	GameState.is_hari_libur = (dow >= 6)
 
 	_set_latar(GameConstants.Waktu.PAGI, GameConstants.AP_PAGI)
 	_reset_daily_counters()
-	GameState.emit_signal("hari_changed", GameState.hari, GameState.fase)
-
-
+	GameState.emit_signal("hari_changed", GameState.hari, GameState.fase) 
+	
 func _advance_fase() -> void:
 	if GameState.fase < GameConstants.Fase.SMA:
 		GameState.fase       += 1

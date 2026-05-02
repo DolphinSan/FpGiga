@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqerdm47mgexa"]
+[gd_scene load_steps=8 format=3 uid="uid://cqerdm47mgexa"]
 
 [ext_resource type="Texture2D" uid="uid://claf0q08ri1dk" path="res://Asset/Sprite/button.png" id="1_fvp02"]
 [ext_resource type="Script" uid="uid://cljkggo3ky2qi" path="res://Scripts/ActionMenu/ActionMenu.gd" id="1_ppbdf"]
 [ext_resource type="PackedScene" uid="uid://d2smjqv7l1yx1" path="res://Scene/Gameplay/NurtureMenu.tscn" id="2_kxeoe"]
 [ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="2_ppbdf"]
-[ext_resource type="Texture2D" uid="uid://dtkxmwsy22lmq" path="res://Asset/Sprite/Araya_StandingSprite.webp" id="3_kxeoe"]
+[ext_resource type="Texture2D" uid="uid://dtkxmwsy22lmq" path="res://Asset/Sprite/Fase1/ArayaNormal.webp" id="3_kxeoe"]
+[ext_resource type="Script" uid="uid://b6igp70mrquom" path="res://Scripts/Debug/DebugPanel.gd" id="5_svnnj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qep3"]
 bg_color = Color(0.117647, 0.117647, 0.180392, 1)
@@ -154,22 +155,22 @@ theme_override_font_sizes/font_size = 8
 text = "test"
 horizontal_alignment = 1
 
-[node name="recreation" type="TextureButton" parent="UI/MarginContainer/ActionMenu/GridContainer"]
+[node name="Recreation" type="TextureButton" parent="UI/MarginContainer/ActionMenu/GridContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/ActionMenu/GridContainer/recreation"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/ActionMenu/GridContainer/Recreation"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/ActionMenu/GridContainer/recreation/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/ActionMenu/GridContainer/Recreation/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_fvp02")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="UI/MarginContainer/ActionMenu/GridContainer/recreation/VBoxContainer/TextureRect"]
+[node name="Label" type="Label" parent="UI/MarginContainer/ActionMenu/GridContainer/Recreation/VBoxContainer/TextureRect"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 4.0
@@ -249,10 +250,10 @@ theme_override_fonts/font = ExtResource("2_ppbdf")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ppbdf")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="DebugLabel" type="Label" parent="UI"]
+offset_right = 323.0
+offset_bottom = 134.0
+script = ExtResource("5_svnnj")
 
 [node name="test" type="Sprite2D" parent="."]
 position = Vector2(362, 642)

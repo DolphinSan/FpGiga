@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtkxmwsy22lmq"
-path="res://.godot/imported/Araya_StandingSprite.webp-92d45b839e49f54e2b2585a735466af9.ctex"
+uid="uid://dnt5egohyxm3u"
+path="res://.godot/imported/ArayaNormal.png-5a8aaf3ac6ea784560102d19d08a7ce7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Sprite/Araya_StandingSprite.webp"
-dest_files=["res://.godot/imported/Araya_StandingSprite.webp-92d45b839e49f54e2b2585a735466af9.ctex"]
+source_file="res://Asset/Sprite/Fase2/ArayaNormal.png"
+dest_files=["res://.godot/imported/ArayaNormal.png-5a8aaf3ac6ea784560102d19d08a7ce7.ctex"]
 
 [params]
 

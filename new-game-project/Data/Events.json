@@ -1,0 +1,244 @@
+[
+	{
+		"id": "anak_merusak_barang",
+		"nama": "Anak Merusak Barang",
+		"deskripsi": "Anak tidak sengaja merusak sebuah barang di rumah.",
+		"fase": [1, 2, 3],
+		"pilihan": [
+			{
+				"teks": "Tegur baik-baik dan beritahu kesalahannya",
+				"point_tambah": ["tanggung_jawab"],
+				"point_kurang": [],
+				"mood": 0,
+				"mental": 0
+			},
+			{
+				"teks": "Marahi",
+				"point_tambah": [],
+				"point_kurang": [],
+				"mood": -1,
+				"mental": -1
+			}
+		]
+	},
+	{
+		"id": "anak_prestasi_akademik",
+		"nama": "Anak Mendapat Prestasi Akademik",
+		"deskripsi": "Anak pulang membawa kabar baik — ia mendapat prestasi di sekolah.",
+		"fase": [1, 2, 3],
+		"pilihan": [
+			{
+				"teks": "Puji sambil melihat ke arahnya",
+				"point_tambah": ["akademik"],
+				"point_kurang": [],
+				"mood": 1,
+				"mental": 1
+			},
+			{
+				"teks": "Puji tanpa melihat ke arahnya",
+				"point_tambah": [],
+				"point_kurang": ["akademik"],
+				"mood": -1,
+				"mental": -1
+			}
+		]
+	},
+	{
+		"id": "anak_ingin_ke_rumah_teman",
+		"nama": "Anak Ingin Pergi ke Rumah Teman",
+		"deskripsi": "Anak meminta izin untuk pergi ke rumah temannya.",
+		"fase": [1, 2],
+		"pilihan": [
+			{
+				"teks": "Perbolehkan dan tanya apakah ingin diantar",
+				"point_tambah": [],
+				"point_kurang": [],
+				"mood": 1,
+				"mental": 0
+			},
+			{
+				"teks": "Tolak dan bilang itu berbahaya",
+				"point_tambah": ["tertekan"],
+				"point_kurang": [],
+				"mood": -1,
+				"mental": 0
+			}
+		]
+	},
+	{
+		"id": "anak_dibully",
+		"nama": "Anak Dibully di Sekolah",
+		"deskripsi": "Anak terlihat murung. Setelah diajak bicara, ternyata ia dibully di sekolah.",
+		"fase": [1, 2, 3],
+		"pilihan": [
+			{
+				"teks": "Menyemangati anak",
+				"point_tambah": [],
+				"point_kurang": ["tertekan"],
+				"mood": 1,
+				"mental": 1
+			},
+			{
+				"teks": "\"Kenapa kamu nggak melawan?\"",
+				"point_tambah": ["tertekan"],
+				"point_kurang": [],
+				"mood": -1,
+				"mental": -1
+			}
+		]
+	},
+	{
+		"id": "anak_ingin_kerja_paruh_waktu",
+		"nama": "Anak Ingin Kerja Paruh Waktu",
+		"deskripsi": "Anak ingin bekerja paruh waktu untuk meringankan beban keluarga.",
+		"fase": [3],
+		"pilihan": [
+			{
+				"teks": "Larang anak bekerja paruh waktu",
+				"point_tambah": ["tertekan"],
+				"point_kurang": ["tanggung_jawab"],
+				"mood": -1,
+				"mental": 0
+			},
+			{
+				"teks": "Izinkan agar mendapat pendapatan tambahan",
+				"point_tambah": ["tanggung_jawab"],
+				"point_kurang": ["dimanjakan"],
+				"mood": 1,
+				"mental": 1
+			}
+		]
+	},
+	{
+		"id": "anak_bohong_nilai",
+		"nama": "Anak Ketahuan Berbohong tentang Nilai Ujian",
+		"deskripsi": "Kamu menemukan nilai ujian anak yang asli — berbeda dari yang ia ceritakan.",
+		"fase": [1, 2, 3],
+		"pilihan": [
+			{
+				"teks": "Tegur keras dan wajib belajar ekstra",
+				"point_tambah": ["akademik"],
+				"point_kurang": ["passion"],
+				"mood": -1,
+				"mental": 1
+			},
+			{
+				"teks": "Diskusi santai dan bantu belajar",
+				"point_tambah": ["akademik"],
+				"point_kurang": ["kemalasan"],
+				"mood": 1,
+				"mental": 1
+			}
+		]
+	},
+	{
+		"id": "anak_kehilangan_barang",
+		"nama": "Anak Kehilangan Barang di Sekolah",
+		"deskripsi": "Anak pulang dengan wajah cemas — barangnya hilang di sekolah.",
+		"fase": [1, 2, 3],
+		"pilihan": [
+			{
+				"teks": "Ganti barangnya tanpa banyak tanya",
+				"point_tambah": ["dimanjakan"],
+				"point_kurang": ["tanggung_jawab"],
+				"mood": 1,
+				"mental": -1
+			},
+			{
+				"teks": "Minta anak bertanggung jawab mencari atau beli sendiri",
+				"point_tambah": ["tanggung_jawab"],
+				"point_kurang": ["dimanjakan"],
+				"mood": -1,
+				"mental": 1
+			}
+		]
+	},
+	{
+		"id": "anak_menolak_pekerjaan_rumah",
+		"nama": "Anak Menolak Membantu Pekerjaan Rumah",
+		"deskripsi": "Anak menolak ketika diminta membantu pekerjaan rumah.",
+		"fase": [1, 2, 3],
+		"pilihan": [
+			{
+				"teks": "Paksa anak membantu",
+				"point_tambah": ["tanggung_jawab"],
+				"point_kurang": ["kemalasan"],
+				"mood": -1,
+				"mental": -1
+			},
+			{
+				"teks": "Ajak dengan pendekatan santai",
+				"point_tambah": ["tanggung_jawab"],
+				"point_kurang": ["kemalasan"],
+				"mood": 1,
+				"mental": 1
+			}
+		]
+	},
+	{
+		"id": "anak_iri_keluarga_lengkap",
+		"nama": "Anak Iri Melihat Teman dengan Keluarga Lengkap",
+		"deskripsi": "Anak terlihat sedih setelah pulang dari rumah temannya.",
+		"fase": [1],
+		"pilihan": [
+			{
+				"teks": "Abaikan, anggap hal biasa",
+				"point_tambah": [],
+				"point_kurang": [],
+				"mood": -1,
+				"mental": -1
+			},
+			{
+				"teks": "Hibur dan yakinkan anak",
+				"point_tambah": [],
+				"point_kurang": ["tertekan"],
+				"mood": 1,
+				"mental": 1
+			}
+		]
+	},
+	{
+		"id": "anak_ingin_menginap",
+		"nama": "Anak Ingin Menginap di Rumah Teman",
+		"deskripsi": "Anak meminta izin untuk menginap di rumah temannya malam ini.",
+		"fase": [2, 3],
+		"pilihan": [
+			{
+				"teks": "Perbolehkan dan bilang untuk jaga diri",
+				"point_tambah": ["tanggung_jawab"],
+				"point_kurang": [],
+				"mood": 0,
+				"mental": 1
+			},
+			{
+				"teks": "Tolak — \"nanti merepotkan\"",
+				"point_tambah": ["tertekan"],
+				"point_kurang": [],
+				"mood": -1,
+				"mental": 0
+			}
+		]
+	},
+	{
+		"id": "anak_ingin_les",
+		"nama": "Anak Ingin Mengambil Les",
+		"deskripsi": "Anak meminta izin untuk ikut les pelajaran.",
+		"fase": [1, 2, 3],
+		"pilihan": [
+			{
+				"teks": "Perbolehkan",
+				"point_tambah": ["akademik"],
+				"point_kurang": ["kemalasan"],
+				"mood": 0,
+				"mental": 0
+			},
+			{
+				"teks": "Tolak — \"ngapain les, kamu udah pintar\"",
+				"point_tambah": [],
+				"point_kurang": ["akademik"],
+				"mood": 0,
+				"mental": -1
+			}
+		]
+	}
+]

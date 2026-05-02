@@ -2,11 +2,11 @@ extends Panel
 
 signal menu_closed
 
-@onready var desc_title: Label = $DescriptionPanel/DescriptionText/Label
-@onready var desc_body: Label  = $DescriptionPanel/DescriptionText/Label2
-@onready var desc_panel        = $DescriptionPanel
+@onready var desc_title: Label   = $DescriptionPanel/DescriptionText/Label
+@onready var desc_body: Label    = $DescriptionPanel/DescriptionText/Label2
+@onready var desc_panel          = $DescriptionPanel
+@onready var grid: GridContainer = $GridContainer
 
-# Map nama node tombol → GameConstants.Aksi
 const NURTURE_AKSI := {
 	"AjakBerbicara": GameConstants.Aksi.NURTURE_1,
 	"BeriHadiah":    GameConstants.Aksi.NURTURE_2,
@@ -18,40 +18,44 @@ const NURTURE_AKSI := {
 var current_selected: BaseButton = null
 var is_confirmed: bool           = false
 
+# Ready
 func _ready() -> void:
 	for node_name in NURTURE_AKSI:
-		var btn := get_node_or_null(node_name)
+		var btn := grid.get_node_or_null(node_name)
 		if btn:
 			btn.pressed.connect(_on_nurture_btn_pressed.bind(btn))
+			print("[NurtureMenu] Tombol terhubung: ", node_name)
+		else:
+			print("[NurtureMenu] ⚠ Tombol tidak ditemukan: ", node_name)
 
 	GameState.ap_changed.connect(_on_ap_changed)
 	_refresh_all()
 
-#  HANDLER KLIK
+# Handler Klik
 func _on_nurture_btn_pressed(button: BaseButton) -> void:
 	var aksi: int = NURTURE_AKSI.get(button.name, GameConstants.Aksi.NONE)
+	print("[NurtureMenu] Klik: ", button.name, " | aksi: ", aksi, " | confirmed: ", is_confirmed)
 
 	if current_selected != null and current_selected != button:
 		_reset_selection()
 
 	if current_selected == null:
-		# Klik 1: tampilkan deskripsi
 		current_selected = button
 		is_confirmed     = false
 		_show_description(aksi)
 		_set_visual(button, "selected")
 
 	elif not is_confirmed:
-		# Klik 2: eksekusi
 		_try_execute(button, aksi)
 
 	else:
-		# Klik 3: tutup menu
 		emit_signal("menu_closed")
 		queue_free()
 
-#  EKSEKUSI
+# Eksekusi
 func _try_execute(button: BaseButton, aksi: int) -> void:
+	print("[NurtureMenu] Execute aksi: ", aksi, " | can: ", ActionManager.can_execute(aksi))
+
 	if not ActionManager.can_execute(aksi):
 		desc_body.text = "AP tidak cukup."
 		return
@@ -65,7 +69,7 @@ func _try_execute(button: BaseButton, aksi: int) -> void:
 	_set_visual(button, "confirmed")
 	_show_hasil(aksi)
 
-#  DESKRIPSI — Klik 1
+# Deskripsi Klik 1
 func _show_description(aksi: int) -> void:
 	desc_panel.visible = true
 	match aksi:
@@ -113,11 +117,11 @@ func _show_description(aksi: int) -> void:
 				+ "⚠ Terlalu sering (2x/hari selama 3 hari) → anak merasa tertekan.\n\n"
 				+ "Klik lagi untuk mengonfirmasi."
 			)
-			
-#  HASIL — Klik 2 (berhasil)
+
+# Hasil Klik 2
 func _show_hasil(aksi: int) -> void:
 	desc_panel.visible = true
-	var chain := GameState.aksi_terakhir in [GameConstants.Aksi.NURTURE_4, GameConstants.Aksi.NURTURE_5]
+	var chain: bool = GameState.aksi_terakhir in [GameConstants.Aksi.NURTURE_4, GameConstants.Aksi.NURTURE_5]
 
 	match aksi:
 		GameConstants.Aksi.NURTURE_1:
@@ -125,7 +129,7 @@ func _show_hasil(aksi: int) -> void:
 			var hint := _get_passion_hint()
 			desc_body.text  = "Mengobrol dengan anak." + ("\n\n💬 " + hint if hint != "" else "")
 			if GameState.anak_sakit:
-				desc_body.text += "\n\n🤒 Anak terlihat tidak sehat. Pertimbangkan Infirmary."
+				desc_body.text += "\n\nAnak terlihat tidak sehat"
 		GameConstants.Aksi.NURTURE_2:
 			desc_title.text = "BERI HADIAH ✓"
 			desc_body.text  = "Mood anak naik." + (" (Chain bonus! Mood + mental naik)" if chain else "")
@@ -141,7 +145,7 @@ func _show_hasil(aksi: int) -> void:
 
 	desc_body.text += "\n\nKlik lagi untuk menutup menu."
 
-
+# Passion Hint
 func _get_passion_hint() -> String:
 	match GameState.passion_clue_level:
 		1: return "Anak seperti menyukai sesuatu, tapi belum jelas."
@@ -153,13 +157,12 @@ func _get_passion_hint() -> String:
 				GameConstants.Passion.SENI:      return "Anak sering bercerita soal seni."
 	return ""
 
-#  REFRESH & VISUA
+# Refresh & Visual
 func _refresh_all() -> void:
 	for node_name in NURTURE_AKSI:
-		var btn := get_node_or_null(node_name)
+		var btn := grid.get_node_or_null(node_name)
 		if btn:
-			var aksi: int = NURTURE_AKSI[node_name]
-			btn.disabled = not ActionManager.can_execute(aksi)
+			btn.disabled = not ActionManager.can_execute(NURTURE_AKSI[node_name])
 
 
 func _set_visual(button: BaseButton, state: String) -> void:
@@ -172,11 +175,11 @@ func _set_visual(button: BaseButton, state: String) -> void:
 func _reset_selection() -> void:
 	if current_selected:
 		_set_visual(current_selected, "normal")
-	current_selected = null
-	is_confirmed     = false
+	current_selected   = null
+	is_confirmed       = false
 	desc_panel.visible = false
 
-#  SIGNAL
+# Signal
 func _on_ap_changed(_ap: int) -> void:
 	_refresh_all()
 

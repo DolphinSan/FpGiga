@@ -18,7 +18,7 @@ const BUTTON_AKSI := {
 	"lomba":      GameConstants.Aksi.LOMBA,
 }
 
-#  DEBUG HELPER
+# Debug Helper
 func _dbg(msg: String) -> void:
 	print("[ActionMenu] ", msg)
 
@@ -41,7 +41,7 @@ func _mood_str() -> String:
 		GameConstants.Mood.GREAT: return "GREAT"
 	return "?"
 
-#  READY
+# Ready
 func _ready() -> void:
 	_dbg("_ready() dipanggil")
 
@@ -54,24 +54,27 @@ func _ready() -> void:
 
 	var connected_count := 0
 	for button in grid.get_children():
+		print("[ActionMenu] Child: ", button.name, " | class: ", button.get_class())
 		if not (button is TextureButton or button is Button):
+			print("[ActionMenu] ⚠ Skip — bukan button")
 			continue
 		if button.name.to_lower() == "nurture":
 			continue
 		button.pressed.connect(_on_action_button_pressed.bind(button))
 		connected_count += 1
-		_dbg("Tombol terhubung: " + button.name)
+		print("[ActionMenu] ✓ Signal connected: ", button.name)
 
 	_dbg("Total tombol terhubung (non-nurture): " + str(connected_count))
 
 	GameState.ap_changed.connect(_on_ap_changed)
 	GameState.anak_sakit_changed.connect(_on_anak_sakit_changed)
 	GameState.latar_changed.connect(_on_latar_changed)
-	_dbg("Signal GameState terhubung")
+	RandomEventManager.event_triggered.connect(_on_random_event)
+	_dbg("Signal GameState & RandomEvent terhubung")
 
 	_refresh_all_buttons()
 
-#  HANDLER KLIK
+# Handler Klik
 func _on_action_button_pressed(button: BaseButton) -> void:
 	var aksi: int = BUTTON_AKSI.get(button.name.to_lower(), GameConstants.Aksi.NONE)
 	_dbg("Tombol diklik: %s | aksi: %d | selected: %s | confirmed: %s" % [
@@ -101,13 +104,13 @@ func _on_action_button_pressed(button: BaseButton) -> void:
 		_dbg("Klik 3 → reset")
 		_reset_selection()
 
-#  EKSEKUSI
+# Eksekusi
 func _try_execute(button: BaseButton, aksi: int) -> void:
 	_dbg("_try_execute: aksi=%d" % aksi)
 	_dbg_state()
 
 	if not ActionManager.can_execute(aksi):
-		_dbg("❌ can_execute = false → tampilkan pesan gagal")
+		_dbg("can_execute = false → tampilkan pesan gagal")
 		_show_gagal(aksi)
 		return
 
@@ -127,7 +130,7 @@ func _try_execute(button: BaseButton, aksi: int) -> void:
 	is_confirmed = true
 	_set_visual(button, "confirmed")
 	_show_hasil(aksi)
-	_dbg_state()  # print state setelah aksi berhasil
+	_dbg_state()
 
 	if aksi == GameConstants.Aksi.NURTURE_1:
 		_post_nurture1()
@@ -156,7 +159,7 @@ func _open_lomba_ui() -> void:
 	_dbg("⚠ Lomba UI belum disambungkan ke scene.")
 	push_warning("Lomba UI belum dibuat.")
 
-#  DESKRIPSI
+# Deskripsi Klik 1
 func _show_description(aksi: int) -> void:
 	description_panel.visible = true
 	match aksi:
@@ -197,6 +200,7 @@ func _show_description(aksi: int) -> void:
 				+ "Klik lagi untuk membuka menu lomba."
 			)
 
+# Hasil Klik 2
 func _show_hasil(aksi: int) -> void:
 	description_panel.visible = true
 	var chain: bool = GameState.aksi_terakhir in [GameConstants.Aksi.NURTURE_4, GameConstants.Aksi.NURTURE_5]
@@ -213,6 +217,7 @@ func _show_hasil(aksi: int) -> void:
 			desc_label.text  = "Anak dibawa ke dokter. Kondisi membaik."
 	desc_label.text += "\n\nKlik lagi untuk menutup."
 
+# Gagal
 func _show_gagal(aksi: int) -> void:
 	description_panel.visible = true
 	_dbg("_show_gagal: aksi=%d" % aksi)
@@ -226,7 +231,7 @@ func _show_gagal(aksi: int) -> void:
 		_:
 			desc_label.text = "AP tidak cukup."
 
-#  REFRESH TOMBOL
+# Refresh Tombol
 func _refresh_all_buttons() -> void:
 	_dbg("_refresh_all_buttons()")
 	for button_name in BUTTON_AKSI:
@@ -238,10 +243,10 @@ func _refresh_button(button_name: String) -> void:
 	if node == null:
 		node = grid.get_node_or_null(button_name.capitalize())
 	if node == null:
-		_dbg("⚠ Tombol '%s' tidak ditemukan di grid" % button_name)
+		_dbg("Tombol '%s' tidak ditemukan di grid" % button_name)
 		return
 	if not node is BaseButton:
-		_dbg("⚠ Node '%s' bukan BaseButton" % button_name)
+		_dbg("Node '%s' bukan BaseButton" % button_name)
 		return
 
 	var btn := node as BaseButton
@@ -253,7 +258,7 @@ func _refresh_button(button_name: String) -> void:
 	if button_name == "infirmary":
 		btn.modulate = Color(1.0, 0.5, 0.5) if GameState.anak_sakit else Color(0.6, 0.6, 0.6)
 
-#  VISUAL
+# Visual
 func _set_visual(button: BaseButton, state: String) -> void:
 	match state:
 		"selected":  button.modulate = Color(1.2, 1.2, 0.6)
@@ -275,7 +280,7 @@ func hide_description() -> void:
 	if title_label: title_label.text = ""
 	if desc_label:  desc_label.text  = ""
 
-#  SIGNAL HANDLERS
+# Signal Handlers
 func _on_ap_changed(ap: int) -> void:
 	_dbg("Signal ap_changed → AP: " + str(ap))
 	_refresh_all_buttons()
@@ -288,8 +293,16 @@ func _on_latar_changed(latar: int) -> void:
 	_dbg("Signal latar_changed → latar: " + str(latar))
 	_reset_selection()
 	_refresh_all_buttons()
+	RandomEventManager.try_trigger_event()
 
-#  NURTURE MENU
+func _on_random_event(event: Dictionary) -> void:
+	_dbg("Random event muncul: " + event["nama"])
+	print("[ActionMenu] EVENT  : ", event["nama"])
+	print("[ActionMenu] Pilihan 1: ", event["pilihan"][0]["teks"])
+	print("[ActionMenu] Pilihan 2: ", event["pilihan"][1]["teks"])
+	# TODO: tampilkan popup UI event
+
+# Nurture Menu
 func _on_nurture_pressed() -> void:
 	_dbg("Nurture button diklik")
 	if is_instance_valid(nurture_menu_instance):
@@ -300,7 +313,7 @@ func _on_nurture_pressed() -> void:
 	_reset_selection()
 
 	if nurture_menu_scene == null:
-		_dbg("❌ nurture_menu_scene belum di-assign di Inspector!")
+		_dbg("nurture_menu_scene belum di-assign di Inspector!")
 		push_error("Nurture Menu Scene belum di-assign!")
 		return
 
@@ -342,4 +355,6 @@ func _exit_tree() -> void:
 		GameState.anak_sakit_changed.disconnect(_on_anak_sakit_changed)
 	if GameState.latar_changed.is_connected(_on_latar_changed):
 		GameState.latar_changed.disconnect(_on_latar_changed)
+	if RandomEventManager.event_triggered.is_connected(_on_random_event):
+		RandomEventManager.event_triggered.disconnect(_on_random_event)
 	_dbg("_exit_tree — semua signal diputus")
