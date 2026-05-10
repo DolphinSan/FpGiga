@@ -1,25 +1,25 @@
 extends Node
 # RandomEventManager — load event dari JSON, roll 20%, eksekusi efek.
 # Autoload. Maksimal 1 event per hari.
+# Sakit adalah event tersembunyi — tidak ada popup.
 
 signal event_triggered(event_data: Dictionary)
 
-const EVENT_PATH  := "res://Data/events.json"
-const CHANCE      := 0.20   # 20%
+const EVENT_PATH   := "res://Data/Events.json"
+const CHANCE       := 0.20   # 20% untuk event normal
+const CHANCE_SAKIT := 0.15   # 15% anak sakit per hari 
 
 var _all_events: Array[Dictionary] = []
-var _event_hari_ini: bool = false   # reset tiap hari
+var _event_hari_ini: bool = false
 
-# Setup
 func _ready() -> void:
 	_load_events()
 	GameState.hari_changed.connect(_on_hari_changed)
 
 func _load_events() -> void:
 	if not FileAccess.file_exists(EVENT_PATH):
-		push_error("[RandomEventManager] events.json tidak ditemukan di: " + EVENT_PATH)
+		push_error("[RandomEventManager] events.json tidak ditemukan: " + EVENT_PATH)
 		return
-
 	var file := FileAccess.open(EVENT_PATH, FileAccess.READ)
 	var json  := JSON.new()
 	if json.parse(file.get_as_text()) != OK:
@@ -27,71 +27,67 @@ func _load_events() -> void:
 		file.close()
 		return
 	file.close()
-
 	var data = json.get_data()
 	if data is Array:
 		for item in data:
 			_all_events.append(item)
 	print("[RandomEventManager] Loaded %d events" % _all_events.size())
 
-# Dipanggil TimeManager setiap ganti hari
 func _on_hari_changed(_hari: int, _fase: int) -> void:
 	_event_hari_ini = false
+	# Roll sakit setiap hari (tersembunyi)
+	_roll_sakit()
 
-# Dipanggil dari luar (misal: DayScene) di awal setiap latar waktu
+# Roll apakah anak sakit hari ini (silent)
+func _roll_sakit() -> void:
+	# Jika sudah sakit, tidak perlu roll lagi
+	if GameState.anak_sakit:
+		return
+	if randf() <= CHANCE_SAKIT:
+		GameState.anak_sakit    = true
+		GameState.sakit_diketahui = false   # player belum tahu
+		print("[RandomEventManager] Anak sakit (tersembunyi dari player)")
+
+# Dipanggil dari ActionMenu setiap ganti latar
 func try_trigger_event() -> void:
 	if _event_hari_ini:
-		print("[RandomEventManager] Sudah ada event hari ini, skip")
 		return
-
 	if randf() > CHANCE:
-		print("[RandomEventManager] Roll gagal — tidak ada event")
 		return
-
 	var kandidat := _get_kandidat()
 	if kandidat.is_empty():
-		print("[RandomEventManager] Tidak ada event yang sesuai fase")
 		return
-
 	var event: Dictionary = kandidat[randi() % kandidat.size()]
 	_event_hari_ini = true
 	print("[RandomEventManager] Event triggered: ", event["id"])
 	emit_signal("event_triggered", event)
 
-# Filter event berdasarkan fase & belum pernah terjadi
 func _get_kandidat() -> Array:
 	var result := []
 	for event in _all_events:
-		var fase_list: Array = event.get("fase", [])
-		if GameState.fase in fase_list:
+		var fase_list: Array  = event.get("fase",  [])
+		var waktu_list: Array = event.get("waktu", [0, 1, 2])
+		var fase_int_list  := fase_list.map(func(f): return int(f))
+		var waktu_int_list := waktu_list.map(func(w): return int(w))
+		if GameState.fase in fase_int_list and GameState.latar in waktu_int_list:
 			if not event["id"] in GameState.random_events_triggered:
 				result.append(event)
 	return result
 
-# Eksekusi pilihan pemain (dipanggil UI setelah pemain memilih)
 func resolve_event(event: Dictionary, pilihan_index: int) -> void:
 	var pilihan: Dictionary = event["pilihan"][pilihan_index]
 	print("[RandomEventManager] Resolve: ", event["id"], " | pilihan: ", pilihan_index)
-
-	# Tambah point
 	for stat in pilihan.get("point_tambah", []):
 		_add_point(stat, 1)
-
-	# Kurangi point
 	for stat in pilihan.get("point_kurang", []):
 		_add_point(stat, -1)
-
-	# Mood & mental
 	var mood_delta: int   = pilihan.get("mood", 0)
 	var mental_delta: int = pilihan.get("mental", 0)
 	if mood_delta != 0:
 		GameState.add_mood(mood_delta)
 	if mental_delta != 0:
 		GameState.add_mental(mental_delta)
-
-	# Catat event sudah pernah terjadi
 	GameState.random_events_triggered.append(event["id"])
-
 	print("[RandomEventManager] Selesai. Mood: %d | Mental: %d" % [GameState.mood, GameState.mental])
 
 func _add_point(stat: String, delta: int) -> void:
@@ -102,7 +98,6 @@ func _add_point(stat: String, delta: int) -> void:
 		"dimanjakan":     GameState.point_dimanjakan     += delta
 		"tertekan":       GameState.point_tertekan       += delta
 		"kemalasan":      GameState.point_kemalasan      += delta
-	# Clamp agar tidak negatif
 	GameState.point_akademik       = max(0, GameState.point_akademik)
 	GameState.point_tanggung_jawab = max(0, GameState.point_tanggung_jawab)
 	GameState.point_passion        = max(0, GameState.point_passion)

@@ -40,6 +40,9 @@ var point_passion: int        = 0
 var point_dimanjakan: int     = 0
 var point_tertekan: int       = 0
 var point_kemalasan: int      = 0
+var bicara_count: int = 0
+var sakit_diketahui: bool = false   
+var hari_sakit: int       = 0       
 
 #Chain & Streak (diisi oleh ActionManager)
 var aksi_terakhir: int = GameConstants.Aksi.NONE
@@ -91,6 +94,9 @@ func reset_new_game() -> void:
 	point_dimanjakan     = 0
 	point_tertekan       = 0
 	point_kemalasan      = 0
+	bicara_count = 0
+	sakit_diketahui = false
+	hari_sakit      = 0
 
 	aksi_terakhir = GameConstants.Aksi.NONE
 	_reset_streak()
@@ -150,6 +156,9 @@ func to_dict() -> Dictionary:
 		"lomba_sudah_selesai": lomba_sudah_selesai,
 		"lomba_hasil_menang": lomba_hasil_menang,
 		"random_events_triggered": random_events_triggered,
+		"sakit_diketahui": sakit_diketahui,
+		"hari_sakit":      hari_sakit,
+		"bicara_count":    bicara_count,
 	}
 
 
@@ -170,6 +179,9 @@ func from_dict(d: Dictionary) -> void:
 	mental        = d.get("mental",        GameConstants.Mental.BIASA)
 	anak_sakit    = d.get("anak_sakit",    false)
 	mental_capped = d.get("mental_capped", false)
+	sakit_diketahui = d.get("sakit_diketahui", false)
+	hari_sakit      = d.get("hari_sakit",      0)
+	bicara_count    = d.get("bicara_count",    0)
 
 	passion            = d.get("passion",            GameConstants.Passion.BELUM_DIKETAHUI)
 	passion_clue_level = d.get("passion_clue_level", 0)

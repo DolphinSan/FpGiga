@@ -10,6 +10,11 @@ func _process(_delta: float) -> void:
 		+ "Mood   : %s\n" % _mood_str()
 		+ "Mental : %s\n" % _mental_str()
 		+ "Sakit  : %s\n" % str(GameState.anak_sakit)
+		+ "Sakit     : %s (diketahui: %s | hari: %d)\n" % [
+			str(GameState.anak_sakit),
+			str(GameState.sakit_diketahui),
+			GameState.hari_sakit
+		]
 		+ "\n── CHAIN ──────────────\n"
 		+ "Aksi terakhir: %s\n" % _aksi_str(GameState.aksi_terakhir)
 		+ "Chain aktif  : %s\n" % _chain_str()
@@ -21,6 +26,7 @@ func _process(_delta: float) -> void:
 		+ "Tertekan     : %d\n" % GameState.point_tertekan
 		+ "Kemalasan    : %d\n" % GameState.point_kemalasan
 		+ "\n── STREAK ─────────────\n"
+		
 		+ _streak_str()
 	)
 

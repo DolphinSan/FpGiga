@@ -208,6 +208,7 @@ Bersih"
 horizontal_alignment = 1
 
 [node name="DescriptionPanel" type="MarginContainer" parent="MarginContainer/NurtureMenu"]
+layout_mode = 0
 offset_left = -0.710657
 offset_top = 64.9057
 offset_right = 39.2893

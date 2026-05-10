@@ -1,10 +1,8 @@
 extends Node
-#  TimeManager, mengurus alur latar waktu, hari, dan fase.
+# TimeManager — mengurus alur latar waktu, hari, dan fase.
 
-# Maju ke latar berikutnya. Dipanggil UI saat AP habis
-# atau pemain menekan tombol "Lanjut".
 func next_latar() -> void:
-	GameState.aksi_terakhir = GameConstants.Aksi.NONE   # reset chain tracker
+	GameState.aksi_terakhir = GameConstants.Aksi.NONE
 
 	if GameState.is_hari_libur:
 		match GameState.latar:
@@ -33,6 +31,7 @@ func _set_latar(waktu: int, ap: int) -> void:
 
 func _advance_hari() -> void:
 	ActionManager.evaluate_daily_streaks()
+	_check_sakit_duration()
 
 	GameState.hari += 1
 	if GameState.hari > GameState.hari_max:
@@ -44,8 +43,9 @@ func _advance_hari() -> void:
 
 	_set_latar(GameConstants.Waktu.PAGI, GameConstants.AP_PAGI)
 	_reset_daily_counters()
-	GameState.emit_signal("hari_changed", GameState.hari, GameState.fase) 
-	
+	GameState.emit_signal("hari_changed", GameState.hari, GameState.fase)
+
+
 func _advance_fase() -> void:
 	if GameState.fase < GameConstants.Fase.SMA:
 		GameState.fase       += 1
@@ -59,12 +59,27 @@ func _advance_fase() -> void:
 		GameState.emit_signal("game_over", ending)
 
 
+func _check_sakit_duration() -> void:
+	if not GameState.anak_sakit:
+		GameState.hari_sakit = 0
+		return
+
+	GameState.hari_sakit += 1
+	print("[TimeManager] Hari sakit: %d" % GameState.hari_sakit)
+
+	if GameState.hari_sakit >= 7:
+		print("[TimeManager] ⚠ Sakit terlalu lama — mood & mental drop!")
+		GameState.mood   = GameConstants.Mood.AWFUL
+		GameState.mental = GameConstants.Mental.RUSAK
+		GameState.emit_signal("mood_changed",   GameState.mood)
+		GameState.emit_signal("mental_changed", GameState.mental)
+
+
 func _reset_daily_counters() -> void:
 	for key in GameState.streak:
 		GameState.streak[key]["today"] = 0
 
 
-# Penalti AP akibat mood buruk — dipanggil tiap ganti latar
 func _apply_mood_ap_penalty() -> void:
 	match GameState.mood:
 		GameConstants.Mood.BAD:
@@ -74,11 +89,9 @@ func _apply_mood_ap_penalty() -> void:
 	GameState.emit_signal("ap_changed", GameState.action_point)
 
 
-# Cek apakah hari ini adalah minggu pertama fase (untuk buka pendaftaran lomba)
 func is_minggu_pertama() -> bool:
 	return GameState.hari <= 7
 
 
-# Cek apakah sekarang waktu lomba (Sabtu/Minggu minggu kedua)
 func is_waktu_lomba() -> bool:
 	return GameState.hari > 7 and GameState.is_hari_libur

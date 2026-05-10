@@ -1,11 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqerdm47mgexa"]
+[gd_scene load_steps=14 format=3 uid="uid://cqerdm47mgexa"]
 
+[ext_resource type="Script" uid="uid://dap3oy8qnqxmk" path="res://Scene/Gameplay/sakit.gd" id="1_1t7rr"]
 [ext_resource type="Texture2D" uid="uid://claf0q08ri1dk" path="res://Asset/Sprite/button.png" id="1_fvp02"]
 [ext_resource type="Script" uid="uid://cljkggo3ky2qi" path="res://Scripts/ActionMenu/ActionMenu.gd" id="1_ppbdf"]
 [ext_resource type="PackedScene" uid="uid://d2smjqv7l1yx1" path="res://Scene/Gameplay/NurtureMenu.tscn" id="2_kxeoe"]
 [ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="2_ppbdf"]
 [ext_resource type="Texture2D" uid="uid://dtkxmwsy22lmq" path="res://Asset/Sprite/Fase1/ArayaNormal.webp" id="3_kxeoe"]
+[ext_resource type="PackedScene" uid="uid://ld07vrcb6ehu" path="res://Scene/Gameplay/EventPopup.tscn" id="3_snel1"]
+[ext_resource type="PackedScene" uid="uid://y717l32unht0" path="res://Scene/Gameplay/LombaPanel.tscn" id="4_vgoiy"]
 [ext_resource type="Script" uid="uid://b6igp70mrquom" path="res://Scripts/Debug/DebugPanel.gd" id="5_svnnj"]
+[ext_resource type="PackedScene" uid="uid://cmlksdy212qkn" path="res://Scene/Gameplay/LombaStartPanel.tscn" id="6_kbora"]
+[ext_resource type="Script" uid="uid://cgkjcyxwnb28q" path="res://Scripts/ActionMenu/araya_sprite.gd" id="8_7n0jt"]
+[ext_resource type="PackedScene" uid="uid://ckvvqhv5gr6rf" path="res://Scene/Gameplay/DebugPanel.tscn" id="12_wd8of"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qep3"]
 bg_color = Color(0.117647, 0.117647, 0.180392, 1)
@@ -48,6 +54,11 @@ offset_bottom = 23.0
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="Sakit" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_1t7rr")
+
 [node name="Mood bar" type="TextureProgressBar" parent="UI"]
 offset_top = -1.0
 offset_right = 40.0
@@ -82,6 +93,9 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8qep3")
 script = ExtResource("1_ppbdf")
 nurture_menu_scene = ExtResource("2_kxeoe")
+event_popup_scene = ExtResource("3_snel1")
+lomba_panel_scene = ExtResource("4_vgoiy")
+lomba_start_scene = ExtResource("6_kbora")
 
 [node name="GridContainer" type="GridContainer" parent="UI/MarginContainer/ActionMenu"]
 layout_mode = 0
@@ -255,6 +269,11 @@ offset_right = 323.0
 offset_bottom = 134.0
 script = ExtResource("5_svnnj")
 
-[node name="test" type="Sprite2D" parent="."]
+[node name="Araya Sprite" type="Sprite2D" parent="."]
 position = Vector2(362, 642)
 texture = ExtResource("3_kxeoe")
+script = ExtResource("8_7n0jt")
+
+[node name="DebugPanel" parent="." instance=ExtResource("12_wd8of")]
+layer = 100
+visible = false

@@ -4,6 +4,11 @@
 		"nama": "Anak Merusak Barang",
 		"deskripsi": "Anak tidak sengaja merusak sebuah barang di rumah.",
 		"fase": [1, 2, 3],
+		"waktu" : [1, 2, 3],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Kamu pulang dan mendapati sesuatu pecah di lantai." },
+			{ "speaker": "Anak",    "teks": "M-maaf... aku nggak sengaja." }
+		],
 		"pilihan": [
 			{
 				"teks": "Tegur baik-baik dan beritahu kesalahannya",
@@ -26,6 +31,7 @@
 		"nama": "Anak Mendapat Prestasi Akademik",
 		"deskripsi": "Anak pulang membawa kabar baik — ia mendapat prestasi di sekolah.",
 		"fase": [1, 2, 3],
+		"waktu" : [3],
 		"pilihan": [
 			{
 				"teks": "Puji sambil melihat ke arahnya",
@@ -48,6 +54,7 @@
 		"nama": "Anak Ingin Pergi ke Rumah Teman",
 		"deskripsi": "Anak meminta izin untuk pergi ke rumah temannya.",
 		"fase": [1, 2],
+		"waktu" : [2],
 		"pilihan": [
 			{
 				"teks": "Perbolehkan dan tanya apakah ingin diantar",
@@ -70,6 +77,7 @@
 		"nama": "Anak Dibully di Sekolah",
 		"deskripsi": "Anak terlihat murung. Setelah diajak bicara, ternyata ia dibully di sekolah.",
 		"fase": [1, 2, 3],
+		"waktu" : [1, 2, 3],
 		"pilihan": [
 			{
 				"teks": "Menyemangati anak",
@@ -92,6 +100,7 @@
 		"nama": "Anak Ingin Kerja Paruh Waktu",
 		"deskripsi": "Anak ingin bekerja paruh waktu untuk meringankan beban keluarga.",
 		"fase": [3],
+		"waktu" : [1, 2, 3],
 		"pilihan": [
 			{
 				"teks": "Larang anak bekerja paruh waktu",
@@ -114,6 +123,7 @@
 		"nama": "Anak Ketahuan Berbohong tentang Nilai Ujian",
 		"deskripsi": "Kamu menemukan nilai ujian anak yang asli — berbeda dari yang ia ceritakan.",
 		"fase": [1, 2, 3],
+		"waktu" : [1, 2, 3],
 		"pilihan": [
 			{
 				"teks": "Tegur keras dan wajib belajar ekstra",
@@ -136,6 +146,7 @@
 		"nama": "Anak Kehilangan Barang di Sekolah",
 		"deskripsi": "Anak pulang dengan wajah cemas — barangnya hilang di sekolah.",
 		"fase": [1, 2, 3],
+		"waktu" : [3],
 		"pilihan": [
 			{
 				"teks": "Ganti barangnya tanpa banyak tanya",
@@ -158,6 +169,7 @@
 		"nama": "Anak Menolak Membantu Pekerjaan Rumah",
 		"deskripsi": "Anak menolak ketika diminta membantu pekerjaan rumah.",
 		"fase": [1, 2, 3],
+		"waktu" : [1, 2, 3],
 		"pilihan": [
 			{
 				"teks": "Paksa anak membantu",
@@ -180,6 +192,7 @@
 		"nama": "Anak Iri Melihat Teman dengan Keluarga Lengkap",
 		"deskripsi": "Anak terlihat sedih setelah pulang dari rumah temannya.",
 		"fase": [1],
+		"waktu" : [2],
 		"pilihan": [
 			{
 				"teks": "Abaikan, anggap hal biasa",
@@ -202,6 +215,7 @@
 		"nama": "Anak Ingin Menginap di Rumah Teman",
 		"deskripsi": "Anak meminta izin untuk menginap di rumah temannya malam ini.",
 		"fase": [2, 3],
+		"waktu" : [2],
 		"pilihan": [
 			{
 				"teks": "Perbolehkan dan bilang untuk jaga diri",
@@ -224,6 +238,7 @@
 		"nama": "Anak Ingin Mengambil Les",
 		"deskripsi": "Anak meminta izin untuk ikut les pelajaran.",
 		"fase": [1, 2, 3],
+		"waktu" : [1, 2, 3],
 		"pilihan": [
 			{
 				"teks": "Perbolehkan",
@@ -237,7 +252,7 @@
 				"point_tambah": [],
 				"point_kurang": ["akademik"],
 				"mood": 0,
-				"mental": -1
+				"mental": -1 
 			}
 		]
 	}

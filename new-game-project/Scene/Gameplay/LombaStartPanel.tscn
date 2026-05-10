@@ -1,0 +1,139 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmlksdy212qkn"]
+
+[ext_resource type="Script" uid="uid://b6cpljqhy47rg" path="res://Scripts/Lomba/lomba_start_panel.gd" id="1_82j8x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oc58i"]
+bg_color = Color(0.117647, 0.117647, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.463025, 0, 0.173508, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovep8"]
+bg_color = Color(0.117647, 0.117647, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.0313726, 0.819608, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
+[node name="LombaPanel" type="CanvasLayer"]
+script = ExtResource("1_82j8x")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -200.0
+offset_right = 274.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oc58i")
+
+[node name="LabelJudul" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 518.0
+offset_bottom = 60.0
+text = "Test"
+horizontal_alignment = 1
+
+[node name="LabelInfo" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 471.0
+offset_bottom = 90.0
+text = "Test"
+
+[node name="LabelSakit" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 290.0
+offset_right = 487.0
+offset_bottom = 389.0
+text = "
+Test
+"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 328.0
+offset_bottom = 144.0
+theme_override_constants/separation = 10
+
+[node name="BtnDaftar" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Daftar
+"
+
+[node name="BtnBatal" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "Batal
+"
+
+[node name="NurtureMenu" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(500, 150)
+offset_left = 110.0
+offset_top = 450.0
+offset_right = 610.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ovep8")
+
+[node name="Label" type="Label" parent="NurtureMenu"]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 495.0
+offset_bottom = 65.0
+text = "Testafapoofkaopgkaoijgkaojgalkgalgkalgkaglkagnjkag"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NurtureMenu"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 70.0
+offset_right = 337.0
+offset_bottom = 114.0
+theme_override_constants/separation = 10
+
+[node name="BtnTetapIkut" type="Button" parent="NurtureMenu/HBoxContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Tetap Ikut
+"
+
+[node name="BtnIstirahat" type="Button" parent="NurtureMenu/HBoxContainer2"]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+text = "Istirahat
+"

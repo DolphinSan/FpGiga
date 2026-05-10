@@ -24,8 +24,7 @@ func execute(aksi: int) -> bool:
 func can_execute(aksi: int) -> bool:
 	match aksi:
 		GameConstants.Aksi.INFIRMARY:
-			# Hanya bisa jika anak terlihat sakit (setelah Nurture 1)
-			return GameState.anak_sakit and _has_enough_ap(aksi)
+			return GameState.sakit_diketahui and _has_enough_ap(aksi)
 		GameConstants.Aksi.RECREATION:
 			return GameState.is_hari_libur and _has_enough_ap(aksi)
 		GameConstants.Aksi.LOMBA:
@@ -60,10 +59,17 @@ func _cost(aksi: int) -> int:
 # Nurture 1 — Ajak Berbicara 
 
 func _nurture1() -> void:
+	GameState.bicara_count += 1
+ 
 	if GameState.passion != GameConstants.Passion.BELUM_DIKETAHUI:
 		GameState.passion_clue_level = min(GameState.passion_clue_level + 1, 3)
-
-	# Chain: jika mental rusak → perbaiki sedikit
+ 
+	# Reveal sakit ke player
+	if GameState.anak_sakit and not GameState.sakit_diketahui:
+		GameState.sakit_diketahui = true
+		print("[ActionManager] Sickness revealed to player")
+		GameState.emit_signal("anak_sakit_changed", true)
+ 	
 	if GameState.mental == GameConstants.Mental.RUSAK:
 		GameState.add_mental(1)
 
@@ -113,10 +119,12 @@ func _nurture5() -> void:
 
 func _rest() -> void:
 	# Chain: sembuhkan jika anak tidak enak badan (bukan parah)
-	if GameState.anak_sakit and GameState.mental > GameConstants.Mental.RUSAK:
-		GameState.anak_sakit = false
+	if GameState.anak_sakit and GameState.hari_sakit >= 0 and GameState.hari_sakit <= 2 and GameState.mental > GameConstants.Mental.RUSAK:
+		GameState.anak_sakit      = false
+		GameState.sakit_diketahui = false
+		GameState.hari_sakit      = 0
+		print("[ActionManager] Anak sembuh via Rest")
 		GameState.emit_signal("anak_sakit_changed", false)
-	# Efek normal: netral
 
 # ── Recreation ──────────────────────────────────────────
 
@@ -132,7 +140,10 @@ func _recreation() -> void:
 # ── Infirmary ───────────────────────────────────────────
 
 func _infirmary() -> void:
-	GameState.anak_sakit = false
+	GameState.anak_sakit      = false
+	GameState.sakit_diketahui = false
+	GameState.hari_sakit      = 0
+	print("[ActionManager] Anak sembuh via Infirmary")
 	GameState.emit_signal("anak_sakit_changed", false)
 
 #  STREAK TRACKER

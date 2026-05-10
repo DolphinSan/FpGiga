@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=3 uid="uid://y717l32unht0"]
+
+[ext_resource type="Script" uid="uid://ca6auybwkqhum" path="res://Scripts/Lomba/lomba_panel.gd" id="1_tsfle"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oc58i"]
+bg_color = Color(0.117647, 0.117647, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.463025, 0, 0.173508, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
+[node name="LombaPanel" type="CanvasLayer"]
+script = ExtResource("1_tsfle")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oc58i")
+
+[node name="LabelInfo" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 475.0
+offset_bottom = 60.0
+text = "Test"
+horizontal_alignment = 1
+
+[node name="LabelHint" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 300.0
+offset_right = 487.0
+offset_bottom = 399.0
+text = "Test
+"
+autowrap_mode = 2
+
+[node name="BtnDaftar" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+offset_left = 99.0
+offset_top = 246.0
+offset_right = 199.0
+offset_bottom = 286.0
+text = "Daftar
+"
+
+[node name="BtnBatal" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+offset_left = 300.0
+offset_top = 245.0
+offset_right = 400.0
+offset_bottom = 285.0
+text = "Batal
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 477.0
+offset_bottom = 232.0
+
+[node name="BtnMusik" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Musik
+"
+
+[node name="BtnOlahraga" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Olahraga
+"
+
+[node name="BtnAkademik" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Akademik"
+
+[node name="BtnSeni" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "Seni"

@@ -6,6 +6,9 @@ extends Panel
 @onready var grid: GridContainer                 = $GridContainer
 
 @export var nurture_menu_scene: PackedScene
+@export var event_popup_scene: PackedScene
+@export var lomba_panel_scene: PackedScene
+@export var lomba_start_scene: PackedScene
 
 var current_selected: BaseButton = null
 var is_confirmed: bool           = false
@@ -140,6 +143,8 @@ func _post_nurture1() -> void:
 	_dbg("_post_nurture1 — passion_clue_level: %d | anak_sakit: %s" % [
 		GameState.passion_clue_level, str(GameState.anak_sakit)
 	])
+	GameState.bicara_count += 1
+	_dbg("GameState.bicara_count: %d")
 	var hint := ""
 	if GameState.passion_clue_level > 0:
 		match GameState.passion_clue_level:
@@ -157,7 +162,12 @@ func _post_nurture1() -> void:
 
 func _open_lomba_ui() -> void:
 	_dbg("⚠ Lomba UI belum disambungkan ke scene.")
-	push_warning("Lomba UI belum dibuat.")
+	if TimeManager.is_minggu_pertama():
+		var panel := lomba_panel_scene.instantiate()
+		get_tree().current_scene.add_child(panel)
+	else:
+		var panel := lomba_start_scene.instantiate()
+		get_tree().current_scene.add_child(panel)
 
 # Deskripsi Klik 1
 func _show_description(aksi: int) -> void:
@@ -256,7 +266,7 @@ func _refresh_button(button_name: String) -> void:
 	_dbg("Refresh '%s' → can_execute: %s" % [button_name, str(bisa)])
 
 	if button_name == "infirmary":
-		btn.modulate = Color(1.0, 0.5, 0.5) if GameState.anak_sakit else Color(0.6, 0.6, 0.6)
+		btn.modulate = Color(1.0, 0.5, 0.5) if GameState.sakit_diketahui else Color(0.6, 0.6, 0.6)
 
 # Visual
 func _set_visual(button: BaseButton, state: String) -> void:
@@ -297,10 +307,18 @@ func _on_latar_changed(latar: int) -> void:
 
 func _on_random_event(event: Dictionary) -> void:
 	_dbg("Random event muncul: " + event["nama"])
-	print("[ActionMenu] EVENT  : ", event["nama"])
-	print("[ActionMenu] Pilihan 1: ", event["pilihan"][0]["teks"])
-	print("[ActionMenu] Pilihan 2: ", event["pilihan"][1]["teks"])
-	# TODO: tampilkan popup UI event
+	if event_popup_scene == null:
+		push_error("event_popup_scene belum di-assign!")
+		return
+		
+	hide()
+	close_nurture_menu()
+	
+	var popup := event_popup_scene.instantiate()
+	get_tree().current_scene.add_child(popup)
+	popup.setup(event)
+	
+	popup.pilihan_dipilih.connect(func(_e, _i): show())
 
 # Nurture Menu
 func _on_nurture_pressed() -> void:
