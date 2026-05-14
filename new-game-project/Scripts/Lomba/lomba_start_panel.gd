@@ -11,15 +11,20 @@ signal lomba_selesai(hasil: Dictionary)
 @onready var btn_batal:       BaseButton = $Panel/HBoxContainer/BtnBatal
 
 # Panel konfirmasi sakit (hidden by default)
-@onready var panel_sakit:     Control    = $PanelKonfirmasiSakit
-@onready var label_sakit_msg: Label      = $PanelKonfirmasiSakit/Label
-@onready var btn_tetap_ikut:  BaseButton = $PanelKonfirmasiSakit/HBox/BtnTetapIkut
-@onready var btn_istirahat:   BaseButton = $PanelKonfirmasiSakit/HBox/BtnIstirahat
+@onready var panel_sakit:     Control    = $PanelSakit
+@onready var label_sakit_msg: Label      = $PanelSakit/Label
+@onready var btn_tetap_ikut:  BaseButton = $PanelSakit/Hbox/BtnTetapIkut
+@onready var btn_istirahat:   BaseButton = $PanelSakit/Hbox/BtnIstirahat
 
 # Apakah sakit terdeteksi (hanya jika bicara_count >= 3)
 var _sakit_terdeteksi: bool = false
 
 func _ready() -> void:
+	print("[LombaStart] btn_mulai:     ", btn_mulai)
+	print("[LombaStart] btn_batal:     ", btn_batal)
+	print("[LombaStart] panel_sakit:   ", panel_sakit)
+	print("[LombaStart] btn_tetap_ikut:", btn_tetap_ikut)
+	print("[LombaStart] btn_istirahat: ", btn_istirahat)
 	panel_sakit.visible = false
 	_setup_info()
 

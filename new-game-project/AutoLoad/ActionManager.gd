@@ -28,7 +28,11 @@ func can_execute(aksi: int) -> bool:
 		GameConstants.Aksi.RECREATION:
 			return GameState.is_hari_libur and _has_enough_ap(aksi)
 		GameConstants.Aksi.LOMBA:
-			return GameState.lomba_terdaftar and TimeManager.is_waktu_lomba()
+			if TimeManager.is_minggu_pertama():
+				return not GameState.lomba_terdaftar and GameState.is_hari_libur
+			else:
+				return GameState.lomba_terdaftar and TimeManager.is_waktu_lomba() and not GameState.lomba_sudah_selesai
+			#return GameState.lomba_terdaftar and TimeManager.is_waktu_lomba()
 		_:
 			return _has_enough_ap(aksi)
 

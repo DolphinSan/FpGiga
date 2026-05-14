@@ -92,6 +92,5 @@ func _apply_mood_ap_penalty() -> void:
 func is_minggu_pertama() -> bool:
 	return GameState.hari <= 7
 
-
 func is_waktu_lomba() -> bool:
-	return GameState.hari > 7 and GameState.is_hari_libur
+	return GameState.hari > 5 and GameState.is_hari_libur

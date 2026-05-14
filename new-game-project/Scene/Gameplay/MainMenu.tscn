@@ -1,0 +1,164 @@
+[gd_scene load_steps=17 format=3 uid="uid://csxulgm181fjh"]
+
+[ext_resource type="Script" uid="uid://d1yeu0fjtmiwu" path="res://Scripts/MainMenu/main_menu.gd" id="1_y3a4p"]
+[ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="2_c2hnx"]
+[ext_resource type="Texture2D" uid="uid://b5qwgun677ees" path="res://Asset/Background/MainMenu/S949.png" id="2_iq7bg"]
+[ext_resource type="AudioStream" uid="uid://6h73xr1ok4ev" path="res://Asset/Music/Limbus Company - Pass On (Canto IX Credits Song - The Unsevering) (Instrumental).mp3" id="3_c2hnx"]
+[ext_resource type="Script" uid="uid://bbe3fblb5k6rn" path="res://Scene/Gameplay/texture_rect.gd" id="3_f0qq6"]
+[ext_resource type="Script" uid="uid://bqbefm5d6fpqm" path="res://Scene/Gameplay/audio_stream_player_2d.gd" id="4_6awvc"]
+[ext_resource type="Texture2D" uid="uid://dfn5k5ucdauq0" path="res://Asset/Background/MainMenu/5622dab1b73e1d93e589167be45d12fe.jpg" id="7_06pxh"]
+[ext_resource type="Script" uid="uid://c5eab0qvhrmx1" path="res://Scene/Gameplay/point_light_2d.gd" id="8_ctdw7"]
+[ext_resource type="Texture2D" uid="uid://dygllfm22w8d5" path="res://Asset/Background/MainMenu/RedLine.png" id="10_qboxq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6awvc"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.564739, 0.527517, 0.524441, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 5.0
+expand_margin_right = 8.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Environment" id="Environment_ctdw7"]
+glow_enabled = true
+glow_bloom = 0.2
+glow_hdr_threshold = 1.2
+fog_enabled = true
+
+[sub_resource type="Curve" id="Curve_ctdw7"]
+_data = [Vector2(0.0735294, 1), 0.0, 0.0, 0, 0, Vector2(0.279412, 0.662921), 0.0, 0.0, 0, 0, Vector2(0.610294, 0.348315), 0.0, 0.0, 0, 0, Vector2(0.919118, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_u7db2"]
+curve = SubResource("Curve_ctdw7")
+
+[sub_resource type="Gradient" id="Gradient_qboxq"]
+offsets = PackedFloat32Array(0, 0.1, 0.681818, 1)
+colors = PackedColorArray(0.49663, 0.927565, 1, 1, 0, 0.194052, 0.155554, 1, 0, 0.899695, 0.721204, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hcdwu"]
+gradient = SubResource("Gradient_qboxq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ctdw7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 1, 1)
+gravity = Vector3(45, 100, 0)
+scale_max = 4.0
+color_initial_ramp = SubResource("GradientTexture1D_hcdwu")
+alpha_curve = SubResource("CurveTexture_u7db2")
+turbulence_enabled = true
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_y3a4p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -1261.0
+offset_top = -1.0
+offset_right = 1596.0
+offset_bottom = 1584.0
+texture = ExtResource("2_iq7bg")
+script = ExtResource("3_f0qq6")
+
+[node name="LabelJudul" type="Label" parent="."]
+offset_left = 175.0
+offset_top = 150.0
+offset_right = 368.0
+offset_bottom = 166.0
+scale = Vector2(2, 2)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.932332, 0.916798, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_c2hnx")
+text = "Unsevering Thread"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 308.0
+offset_top = 459.0
+offset_right = 412.0
+offset_bottom = 581.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="BtnNewGame" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c2hnx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6awvc")
+text = " New Game "
+
+[node name="BtnContinue" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c2hnx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6awvc")
+text = " Continue "
+
+[node name="BtnSetting" type="Button" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c2hnx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6awvc")
+text = "Setting"
+
+[node name="BtnEnding" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c2hnx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6awvc")
+text = " Ending "
+
+[node name="BtnExit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c2hnx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6awvc")
+text = " Exit "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_c2hnx")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+script = ExtResource("4_6awvc")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(420, 541)
+scale = Vector2(0.278584, 0.36452)
+color = Color(0.0176079, 0.164566, 0.287744, 1)
+energy = 1.48
+texture = ExtResource("7_06pxh")
+texture_scale = 3.0
+script = ExtResource("8_ctdw7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ctdw7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(295, 30)
+amount = 100
+lifetime = 10.0
+preprocess = 30.0
+process_material = SubResource("ParticleProcessMaterial_ctdw7")
+
+[node name="RedLine" type="Sprite2D" parent="."]
+position = Vector2(606, 130)
+rotation = -3.59014
+scale = Vector2(2.01252, 2.03373)
+texture = ExtResource("10_qboxq")

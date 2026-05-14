@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqerdm47mgexa"]
+[gd_scene load_steps=16 format=3 uid="uid://cqerdm47mgexa"]
 
 [ext_resource type="Script" uid="uid://dap3oy8qnqxmk" path="res://Scene/Gameplay/sakit.gd" id="1_1t7rr"]
 [ext_resource type="Texture2D" uid="uid://claf0q08ri1dk" path="res://Asset/Sprite/button.png" id="1_fvp02"]
-[ext_resource type="Script" uid="uid://cljkggo3ky2qi" path="res://Scripts/ActionMenu/ActionMenu.gd" id="1_ppbdf"]
+[ext_resource type="Script" uid="uid://cljkggo3ky2qi" path="res://Scripts/Other/ActionMenu.gd" id="1_ppbdf"]
 [ext_resource type="PackedScene" uid="uid://d2smjqv7l1yx1" path="res://Scene/Gameplay/NurtureMenu.tscn" id="2_kxeoe"]
 [ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="2_ppbdf"]
 [ext_resource type="Texture2D" uid="uid://dtkxmwsy22lmq" path="res://Asset/Sprite/Fase1/ArayaNormal.webp" id="3_kxeoe"]
@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://y717l32unht0" path="res://Scene/Gameplay/LombaPanel.tscn" id="4_vgoiy"]
 [ext_resource type="Script" uid="uid://b6igp70mrquom" path="res://Scripts/Debug/DebugPanel.gd" id="5_svnnj"]
 [ext_resource type="PackedScene" uid="uid://cmlksdy212qkn" path="res://Scene/Gameplay/LombaStartPanel.tscn" id="6_kbora"]
-[ext_resource type="Script" uid="uid://cgkjcyxwnb28q" path="res://Scripts/ActionMenu/araya_sprite.gd" id="8_7n0jt"]
+[ext_resource type="Script" uid="uid://cgkjcyxwnb28q" path="res://Scripts/Other/araya_sprite.gd" id="8_7n0jt"]
 [ext_resource type="PackedScene" uid="uid://ckvvqhv5gr6rf" path="res://Scene/Gameplay/DebugPanel.tscn" id="12_wd8of"]
+[ext_resource type="AudioStream" uid="uid://q7ibt5p7pbrp" path="res://Asset/Music/[ LobotomyCorporation OST ]- Neutral01.mp3" id="13_5jyqd"]
+[ext_resource type="Script" uid="uid://bqbefm5d6fpqm" path="res://Scene/Gameplay/audio_stream_player_2d.gd" id="14_oskc3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qep3"]
 bg_color = Color(0.117647, 0.117647, 0.180392, 1)
@@ -276,4 +278,10 @@ script = ExtResource("8_7n0jt")
 
 [node name="DebugPanel" parent="." instance=ExtResource("12_wd8of")]
 layer = 100
-visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_5jyqd")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+script = ExtResource("14_oskc3")

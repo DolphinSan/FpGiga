@@ -89,10 +89,10 @@ offset_right = 328.0
 offset_bottom = 144.0
 theme_override_constants/separation = 10
 
-[node name="BtnDaftar" type="Button" parent="Panel/HBoxContainer"]
+[node name="BtnMulai" type="Button" parent="Panel/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-text = "Daftar
+text = "Mulai
 "
 
 [node name="BtnBatal" type="Button" parent="Panel/HBoxContainer"]
@@ -101,8 +101,7 @@ layout_mode = 2
 text = "Batal
 "
 
-[node name="NurtureMenu" type="Panel" parent="."]
-visible = false
+[node name="PanelSakit" type="Panel" parent="."]
 custom_minimum_size = Vector2(500, 150)
 offset_left = 110.0
 offset_top = 450.0
@@ -110,7 +109,7 @@ offset_right = 610.0
 offset_bottom = 600.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ovep8")
 
-[node name="Label" type="Label" parent="NurtureMenu"]
+[node name="Label" type="Label" parent="PanelSakit"]
 layout_mode = 0
 offset_top = 30.0
 offset_right = 495.0
@@ -118,7 +117,7 @@ offset_bottom = 65.0
 text = "Testafapoofkaopgkaoijgkaojgalkgalgkalgkaglkagnjkag"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="NurtureMenu"]
+[node name="Hbox" type="HBoxContainer" parent="PanelSakit"]
 layout_mode = 0
 offset_left = 150.0
 offset_top = 70.0
@@ -126,13 +125,13 @@ offset_right = 337.0
 offset_bottom = 114.0
 theme_override_constants/separation = 10
 
-[node name="BtnTetapIkut" type="Button" parent="NurtureMenu/HBoxContainer2"]
+[node name="BtnTetapIkut" type="Button" parent="PanelSakit/Hbox"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 text = "Tetap Ikut
 "
 
-[node name="BtnIstirahat" type="Button" parent="NurtureMenu/HBoxContainer2"]
+[node name="BtnIstirahat" type="Button" parent="PanelSakit/Hbox"]
 custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 text = "Istirahat

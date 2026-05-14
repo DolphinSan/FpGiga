@@ -69,14 +69,26 @@ func _on_skip_fase() -> void:
 		print("[DebugCheat] Skip ke Fase: ", GameState.fase)
 
 func _on_skip_libur() -> void:
-	GameState.hari          = 6
+	# Cari hari libur berikutnya dari hari saat ini
+	var next_hari := GameState.hari + 1
+	while next_hari <= GameState.hari_max:
+		var dow := ((next_hari - 1) % 7) + 1
+		if dow >= 6:
+			break
+		next_hari += 1
+
+	if next_hari > GameState.hari_max:
+		print("[DebugCheat] Tidak ada hari libur lagi di fase ini")
+		return
+
+	GameState.hari          = next_hari
 	GameState.is_hari_libur = true
 	GameState.latar         = GameConstants.Waktu.PAGI
 	GameState.action_point  = GameConstants.AP_PAGI
 	GameState.emit_signal("hari_changed", GameState.hari, GameState.fase)
 	GameState.emit_signal("latar_changed", GameState.latar)
 	GameState.emit_signal("ap_changed",    GameState.action_point)
-	print("[DebugCheat] Skip ke hari libur pertama")
+	print("[DebugCheat] Skip ke hari libur: hari ", GameState.hari)
 
 func _on_buat_sakit() -> void:
 	GameState.anak_sakit      = true

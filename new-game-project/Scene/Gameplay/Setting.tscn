@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct7ptq7rn6t6g"]
+
+[ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="1_aeto4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s7ct"]
+bg_color = Color(0.117647, 0.117647, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.564706, 0.529412, 0.52549, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qxjp"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.564739, 0.527517, 0.524441, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 5.0
+expand_margin_right = 8.0
+expand_margin_bottom = 5.0
+
+[node name="Setting" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 356.0
+offset_right = 480.0
+offset_bottom = 555.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3s7ct")
+
+[node name="LabelJudul" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 235.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_aeto4")
+text = "SETTING"
+horizontal_alignment = 1
+
+[node name="LabelVolume" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 40.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("1_aeto4")
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 204.0
+offset_bottom = 66.0
+
+[node name="LabelNilai" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 50.0
+offset_right = 249.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("1_aeto4")
+text = "20%"
+
+[node name="BtnBack" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(50, 0)
+offset_left = 92.0
+offset_top = 173.755
+offset_right = 144.0
+offset_bottom = 193.755
+theme_override_fonts/font = ExtResource("1_aeto4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qxjp")
+text = "Back"
+
+[node name="BtnSave" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(50, 0)
+offset_left = 11.0
+offset_top = 100.0
+offset_right = 225.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("1_aeto4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qxjp")
+text = "Save
+"

@@ -12,7 +12,7 @@ func jalankan_lomba() -> Dictionary:
 	var passion   := GameState.passion
 	var sakit     := GameState.anak_sakit
 
-	var sesuai    := (cabang == passion)
+	var sesuai    := (cabang == GameConstants.Passion.MUSIK) # sementara begini dulu aja karena gaada sprite yang cocok (GW NYARI SENDIRI ANJ)
 	var result    := { "menang": false, "kasus": "" }
 
 	if not sesuai and sakit:
@@ -34,9 +34,10 @@ func jalankan_lomba() -> Dictionary:
 
 	# Tambah point passion
 	if result["menang"]:
-		GameState.point_passion += 2
+		GameState.point_passion += 20
+		_apply_win_bonus()
 	elif result["kasus"] in ["normal", "sick"]:
-		GameState.point_passion += 1   # gagal tapi tetap usaha
+		GameState.point_passion += 5   # gagal tapi tetap usaha
 
 	GameState.lomba_hasil_menang  = result["menang"]
 	GameState.lomba_sudah_selesai = true
@@ -80,3 +81,19 @@ func handle_sakit_sebelum_lomba(tetap_ikut: bool) -> void:
 		GameState.lomba_terdaftar     = false
 		GameState.lomba_sudah_selesai = true
 		GameState.lomba_hasil_menang  = false
+
+func _apply_win_bonus() -> void:
+	var bonus_passion   := int(GameState.point_passion        * 0.20)
+	var bonus_akademik  := int(GameState.point_akademik       * 0.20)
+	var bonus_tgg_jawab := int(GameState.point_tanggung_jawab * 0.20)
+
+	# Minimal bonus 1 agar tetap terasa
+	GameState.point_passion        += max(1, bonus_passion)
+	GameState.point_akademik       += max(1, bonus_akademik)
+	GameState.point_tanggung_jawab += max(1, bonus_tgg_jawab)
+
+	print("[LombaManager] Bonus menang → passion +%d | akademik +%d | tgg_jawab +%d" % [
+		max(1, bonus_passion),
+		max(1, bonus_akademik),
+		max(1, bonus_tgg_jawab)
+	])
