@@ -6,11 +6,14 @@ extends Node2D
 @onready var btn_ending:    Button = $VBoxContainer/BtnEnding
 @onready var btn_exit:      Button = $VBoxContainer/BtnExit
 @onready var label_judul:   Label  = $LabelJudul
+@export var save_slot_scene: PackedScene
 
 const GAMEPLAY_SCENE := "res://Scene/Gameplay/MainUI.tscn"
 const ENDING_GALLERY  := "res://Scene/EndingGallery.tscn"
 
 func _ready() -> void:
+	print("[MainMenu] Continue disabled: ", btn_continue.disabled)
+	print("[MainMenu] Continue modulate: ", btn_continue.modulate)
 	label_judul.text = "Unsevering Thread"
 
 	btn_new_game.pressed.connect(_on_new_game)
@@ -21,25 +24,25 @@ func _ready() -> void:
 
 	var ada_save := SaveSystem.slot_exists(1) or SaveSystem.slot_exists(2) or SaveSystem.slot_exists(0)
 	btn_continue.disabled = not ada_save
-	btn_continue.modulate = Color(0.5, 0.5, 0.5) if ada_save else Color(0.5, 0.5, 0.5)
+	btn_continue.modulate = Color(1, 1, 1) if ada_save else Color(0.5, 0.5, 0.5)
 
 	print("[MainMenu] Save tersedia: ", ada_save)
 
 func _on_new_game() -> void:
-	print("[MainMenu] New Game")
-	GameState.reset_new_game()
-	get_tree().change_scene_to_file(GAMEPLAY_SCENE)
+	var panel := save_slot_scene.instantiate()
+	add_child(panel)
+	panel.setup("new_game")
+	panel.slot_dipilih.connect(func(_slot):
+		get_tree().change_scene_to_file(GAMEPLAY_SCENE)
+	)
 
 func _on_continue() -> void:
-	print("[MainMenu] Continue")
-	# Load save slot terakhir yang ada
-	for slot in [0, 1, 2]:
-		if SaveSystem.slot_exists(slot):
-			SaveSystem.load_game(slot)
-			SaveSystem.load_completed.connect(func(_s):
-				get_tree().change_scene_to_file(GAMEPLAY_SCENE)
-			, CONNECT_ONE_SHOT)
-			return
+	var panel := save_slot_scene.instantiate()
+	add_child(panel)
+	panel.setup("load")
+	panel.slot_dipilih.connect(func(slot):
+		get_tree().change_scene_to_file(GAMEPLAY_SCENE)
+	)
 
 func _on_setting() -> void:
 	print("[MainMenu] Setting — belum dibuat")

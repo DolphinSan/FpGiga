@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnb8tuu816361"]
+
+[ext_resource type="Script" uid="uid://ba0q8h0lnh2rc" path="res://Scripts/Other/save_slot_panel.gd" id="1_4ptde"]
+[ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="2_h3ksb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eukho"]
+bg_color = Color(0.117647, 0.117647, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.564706, 0.529412, 0.52549, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0soao"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.564739, 0.527517, 0.524441, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 5.0
+expand_margin_right = 8.0
+expand_margin_bottom = 5.0
+
+[node name="SaveSlotPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4ptde")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 244.0
+offset_top = 356.0
+offset_right = 480.0
+offset_bottom = 630.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eukho")
+
+[node name="LabelJudul" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 235.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_h3ksb")
+text = "Pilih slot"
+horizontal_alignment = 1
+
+[node name="BtnBack" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(50, 0)
+offset_left = 12.0
+offset_top = 240.0
+offset_right = 64.0
+offset_bottom = 260.0
+theme_override_fonts/font = ExtResource("2_h3ksb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0soao")
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 40.0
+offset_right = 225.0
+offset_bottom = 158.0
+theme_override_constants/separation = 17
+
+[node name="BtnSave" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h3ksb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0soao")
+text = "Slot 1
+"
+
+[node name="BtnSave2" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h3ksb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0soao")
+text = "Slot 2"
+
+[node name="BtnSave3" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h3ksb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0soao")
+text = "Slot 3"

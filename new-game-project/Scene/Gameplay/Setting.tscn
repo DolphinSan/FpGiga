@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ct7ptq7rn6t6g"]
+[gd_scene load_steps=5 format=3 uid="uid://ct7ptq7rn6t6g"]
 
+[ext_resource type="Script" uid="uid://ea3quigoxtvu" path="res://Scripts/Other/setting.gd" id="1_0qxjp"]
 [ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="1_aeto4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s7ct"]
@@ -38,6 +39,7 @@ expand_margin_bottom = 5.0
 [node name="Setting" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_0qxjp")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -81,13 +83,23 @@ text = "20%"
 
 [node name="BtnBack" type="Button" parent="Panel"]
 custom_minimum_size = Vector2(50, 0)
-offset_left = 92.0
-offset_top = 173.755
-offset_right = 144.0
-offset_bottom = 193.755
+offset_left = 12.0
+offset_top = 171.0
+offset_right = 64.0
+offset_bottom = 191.0
 theme_override_fonts/font = ExtResource("1_aeto4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qxjp")
 text = "Back"
+
+[node name="BtnHome" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(50, 0)
+offset_left = 170.0
+offset_top = 171.0
+offset_right = 225.0
+offset_bottom = 191.0
+theme_override_fonts/font = ExtResource("1_aeto4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qxjp")
+text = "Home"
 
 [node name="BtnSave" type="Button" parent="Panel"]
 custom_minimum_size = Vector2(50, 0)
@@ -97,5 +109,5 @@ offset_right = 225.0
 offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("1_aeto4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qxjp")
-text = "Save
+text = "Save Run
 "

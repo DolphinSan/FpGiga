@@ -201,4 +201,7 @@ func from_dict(d: Dictionary) -> void:
 	lomba_sudah_selesai = d.get("lomba_sudah_selesai", false)
 	lomba_hasil_menang  = d.get("lomba_hasil_menang",  false)
 
-	random_events_triggered = d.get("random_events_triggered", [])
+	var raw_events: Array = d.get("random_events_triggered", [])
+	random_events_triggered.clear()
+	for item in raw_events:
+		random_events_triggered.append(str(item))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqerdm47mgexa"]
+[gd_scene load_steps=23 format=3 uid="uid://cqerdm47mgexa"]
 
 [ext_resource type="Script" uid="uid://dap3oy8qnqxmk" path="res://Scene/Gameplay/sakit.gd" id="1_1t7rr"]
 [ext_resource type="Texture2D" uid="uid://claf0q08ri1dk" path="res://Asset/Sprite/button.png" id="1_fvp02"]
@@ -11,9 +11,31 @@
 [ext_resource type="Script" uid="uid://b6igp70mrquom" path="res://Scripts/Debug/DebugPanel.gd" id="5_svnnj"]
 [ext_resource type="PackedScene" uid="uid://cmlksdy212qkn" path="res://Scene/Gameplay/LombaStartPanel.tscn" id="6_kbora"]
 [ext_resource type="Script" uid="uid://cgkjcyxwnb28q" path="res://Scripts/Other/araya_sprite.gd" id="8_7n0jt"]
+[ext_resource type="Texture2D" uid="uid://cefygloe5d7te" path="res://icon.svg" id="10_b1sub"]
+[ext_resource type="Script" uid="uid://io8yx6w1tdc5" path="res://Scene/Gameplay/btn_setting.gd" id="11_585hf"]
 [ext_resource type="PackedScene" uid="uid://ckvvqhv5gr6rf" path="res://Scene/Gameplay/DebugPanel.tscn" id="12_wd8of"]
 [ext_resource type="AudioStream" uid="uid://q7ibt5p7pbrp" path="res://Asset/Music/[ LobotomyCorporation OST ]- Neutral01.mp3" id="13_5jyqd"]
+[ext_resource type="Texture2D" uid="uid://mdkokahmngmq" path="res://Asset/Background/MainUi/Story_Ryōshū_and_Araya's_Room_BG.png" id="13_oskc3"]
+[ext_resource type="Script" uid="uid://c7khlpacdtx23" path="res://Scripts/Other/Background.gd" id="14_bdx3w"]
 [ext_resource type="Script" uid="uid://bqbefm5d6fpqm" path="res://Scene/Gameplay/audio_stream_player_2d.gd" id="14_oskc3"]
+[ext_resource type="PackedScene" uid="uid://ct7ptq7rn6t6g" path="res://Scene/Gameplay/Setting.tscn" id="17_5jof8"]
+[ext_resource type="PackedScene" uid="uid://bnb8tuu816361" path="res://Scene/Gameplay/SaveSlotPanel.tscn" id="20_x2wjx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdx3w"]
+bg_color = Color(0.117647, 0.117647, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qep3"]
 bg_color = Color(0.117647, 0.117647, 0.180392, 1)
@@ -44,22 +66,96 @@ grow_vertical = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Nama Hari" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="InfoPanel" type="Panel" parent="UI"]
+offset_left = 467.0
+offset_top = 15.0
+offset_right = 705.0
+offset_bottom = 320.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bdx3w")
 
-[node name="Latar Waktu" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Action Point" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Sakit" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Sakit" type="Label" parent="UI/InfoPanel"]
+layout_mode = 0
+offset_top = 285.0
+offset_right = 112.0
+offset_bottom = 314.0
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "anak sakit"
 script = ExtResource("1_1t7rr")
+
+[node name="Hari" type="Label" parent="UI/InfoPanel"]
+layout_mode = 0
+offset_right = 207.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Hari Ke - "
+
+[node name="Action Point" type="Label" parent="UI/InfoPanel"]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 135.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Action Point -"
+
+[node name="Mood" type="Label" parent="UI/InfoPanel"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 135.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Mood - ???"
+
+[node name="Mental" type="Label" parent="UI/InfoPanel"]
+layout_mode = 0
+offset_top = 90.0
+offset_right = 135.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Mental - ???"
+
+[node name="Latar Waktu" type="Label" parent="UI/InfoPanel"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 190.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Siang"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InfoPanel"]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 115.0
+offset_bottom = 160.0
+
+[node name="Akademik" type="Label" parent="UI/InfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Akademik - ???"
+
+[node name="Tgg Jawab" type="Label" parent="UI/InfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Tanggung Jawab - ???"
+
+[node name="Passion" type="Label" parent="UI/InfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Passion - ???"
+
+[node name="Dimanjakan" type="Label" parent="UI/InfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Dimanjakan - ??"
+
+[node name="Tertekan" type="Label" parent="UI/InfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Tertekan - ???"
+
+[node name="Kemalasan" type="Label" parent="UI/InfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ppbdf")
+text = "Kemalasan - ???"
 
 [node name="Mood bar" type="TextureProgressBar" parent="UI"]
 offset_top = -1.0
@@ -271,10 +367,11 @@ offset_right = 323.0
 offset_bottom = 134.0
 script = ExtResource("5_svnnj")
 
-[node name="Araya Sprite" type="Sprite2D" parent="."]
-position = Vector2(362, 642)
-texture = ExtResource("3_kxeoe")
-script = ExtResource("8_7n0jt")
+[node name="BtnSetting" type="Button" parent="UI"]
+offset_right = 136.0
+offset_bottom = 136.0
+icon = ExtResource("10_b1sub")
+script = ExtResource("11_585hf")
 
 [node name="DebugPanel" parent="." instance=ExtResource("12_wd8of")]
 layer = 100
@@ -285,3 +382,18 @@ volume_db = -10.0
 autoplay = true
 parameters/looping = true
 script = ExtResource("14_oskc3")
+
+[node name="StoryRyōshūAndAraya\'sRoomBg" type="Sprite2D" parent="."]
+position = Vector2(917, 581)
+scale = Vector2(1.50417, 1.72083)
+texture = ExtResource("13_oskc3")
+script = ExtResource("14_bdx3w")
+
+[node name="Araya Sprite" type="Sprite2D" parent="."]
+position = Vector2(362, 642)
+texture = ExtResource("3_kxeoe")
+script = ExtResource("8_7n0jt")
+
+[node name="Setting" parent="." instance=ExtResource("17_5jof8")]
+visible = false
+save_slot_scene = ExtResource("20_x2wjx")

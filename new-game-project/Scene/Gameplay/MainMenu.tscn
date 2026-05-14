@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://csxulgm181fjh"]
+[gd_scene load_steps=18 format=3 uid="uid://csxulgm181fjh"]
 
 [ext_resource type="Script" uid="uid://d1yeu0fjtmiwu" path="res://Scripts/MainMenu/main_menu.gd" id="1_y3a4p"]
 [ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="2_c2hnx"]
 [ext_resource type="Texture2D" uid="uid://b5qwgun677ees" path="res://Asset/Background/MainMenu/S949.png" id="2_iq7bg"]
+[ext_resource type="PackedScene" uid="uid://bnb8tuu816361" path="res://Scene/Gameplay/SaveSlotPanel.tscn" id="2_qboxq"]
 [ext_resource type="AudioStream" uid="uid://6h73xr1ok4ev" path="res://Asset/Music/Limbus Company - Pass On (Canto IX Credits Song - The Unsevering) (Instrumental).mp3" id="3_c2hnx"]
 [ext_resource type="Script" uid="uid://bbe3fblb5k6rn" path="res://Scene/Gameplay/texture_rect.gd" id="3_f0qq6"]
 [ext_resource type="Script" uid="uid://bqbefm5d6fpqm" path="res://Scene/Gameplay/audio_stream_player_2d.gd" id="4_6awvc"]
@@ -58,6 +59,7 @@ turbulence_enabled = true
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_y3a4p")
+save_slot_scene = ExtResource("2_qboxq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1261.0

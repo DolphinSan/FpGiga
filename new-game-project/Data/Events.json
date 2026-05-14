@@ -32,6 +32,10 @@
 		"deskripsi": "Anak pulang membawa kabar baik — ia mendapat prestasi di sekolah.",
 		"fase": [1, 2, 3],
 		"waktu" : [3],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Kamu pulang dan mendapati ada yang menunggu mu" },
+			{ "speaker": "Anak",    "teks": "Aku mendapat prestasi akademik di sekolah tadi" }
+		],
 		"pilihan": [
 			{
 				"teks": "Puji sambil melihat ke arahnya",
@@ -42,8 +46,8 @@
 			},
 			{
 				"teks": "Puji tanpa melihat ke arahnya",
-				"point_tambah": [],
-				"point_kurang": ["akademik"],
+				"point_tambah": ["akademik"],
+				"point_kurang": [],
 				"mood": -1,
 				"mental": -1
 			}
@@ -55,6 +59,11 @@
 		"deskripsi": "Anak meminta izin untuk pergi ke rumah temannya.",
 		"fase": [1, 2],
 		"waktu" : [2],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Kamu Mendapati ada yang memanggilmu" },
+			{ "speaker": "Kamu", "teks": "Kenapa nak?" },
+			{ "speaker": "Anak",    "teks": "Temanku mengajak ke rumahnya, aku boleh pergi kan?" }
+		],
 		"pilihan": [
 			{
 				"teks": "Perbolehkan dan tanya apakah ingin diantar",
@@ -64,7 +73,7 @@
 				"mental": 0
 			},
 			{
-				"teks": "Tolak dan bilang itu berbahaya",
+				"teks": "Tolak dan berkata \"Nanti Merepotkan\"",
 				"point_tambah": ["tertekan"],
 				"point_kurang": [],
 				"mood": -1,
@@ -78,6 +87,11 @@
 		"deskripsi": "Anak terlihat murung. Setelah diajak bicara, ternyata ia dibully di sekolah.",
 		"fase": [1, 2, 3],
 		"waktu" : [1, 2, 3],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Kamu Mendapati anakmu pulang dengan murung" },
+			{ "speaker": "Kamu", "teks": "Kenapa kamu?" },
+			{ "speaker": "Anak",    "teks": "Tadi aku dibully disekolah" }
+		],
 		"pilihan": [
 			{
 				"teks": "Menyemangati anak",
@@ -101,16 +115,21 @@
 		"deskripsi": "Anak ingin bekerja paruh waktu untuk meringankan beban keluarga.",
 		"fase": [3],
 		"waktu" : [1, 2, 3],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Anakmu memanggilmu seperti ingin bertanya" },
+			{ "speaker": "Kamu", "teks": "Mau tanya apa?" },
+			{ "speaker": "Anak",    "teks": "AKu mau kerja paruh waktu, biar dapet uang tambahan" }
+		],
 		"pilihan": [
 			{
-				"teks": "Larang anak bekerja paruh waktu",
+				"teks": "Larang dan berkata \"Memang nya uang yang diberi kurang?\"",
 				"point_tambah": ["tertekan"],
 				"point_kurang": ["tanggung_jawab"],
 				"mood": -1,
 				"mental": 0
 			},
 			{
-				"teks": "Izinkan agar mendapat pendapatan tambahan",
+				"teks": "Izinkan dan berkata \"Ya bagus nambah pengalaman\"",
 				"point_tambah": ["tanggung_jawab"],
 				"point_kurang": ["dimanjakan"],
 				"mood": 1,
@@ -124,6 +143,11 @@
 		"deskripsi": "Kamu menemukan nilai ujian anak yang asli — berbeda dari yang ia ceritakan.",
 		"fase": [1, 2, 3],
 		"waktu" : [1, 2, 3],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Kamu menemukan kertas ujian yang asli" },
+			{ "speaker": "Kamu", "teks": "Nak kenapa nilai mu beda sama yang kamu bicarakan kemarin?" },
+			{ "speaker": "Anak",    "teks": "Ma-maaf aku bohong" }
+		],
 		"pilihan": [
 			{
 				"teks": "Tegur keras dan wajib belajar ekstra",
@@ -133,7 +157,7 @@
 				"mental": 1
 			},
 			{
-				"teks": "Diskusi santai dan bantu belajar",
+				"teks": "Bilang jangan bohong lagi dan tanyakan apakah mau dibantu",
 				"point_tambah": ["akademik"],
 				"point_kurang": ["kemalasan"],
 				"mood": 1,
@@ -147,6 +171,11 @@
 		"deskripsi": "Anak pulang dengan wajah cemas — barangnya hilang di sekolah.",
 		"fase": [1, 2, 3],
 		"waktu" : [3],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Anak Pulang dengan wajah cemas" },
+			{ "speaker": "Kamu", "teks": "Kamu kenapa?" },
+			{ "speaker": "Anak",    "teks": "Aku... kehilangan barang di sekolah" }
+		],
 		"pilihan": [
 			{
 				"teks": "Ganti barangnya tanpa banyak tanya",
@@ -156,7 +185,7 @@
 				"mental": -1
 			},
 			{
-				"teks": "Minta anak bertanggung jawab mencari atau beli sendiri",
+				"teks": "\"Kamu cari dulu, kalau gaada nanti digantI\"",
 				"point_tambah": ["tanggung_jawab"],
 				"point_kurang": ["dimanjakan"],
 				"mood": -1,
@@ -170,6 +199,10 @@
 		"deskripsi": "Anak menolak ketika diminta membantu pekerjaan rumah.",
 		"fase": [1, 2, 3],
 		"waktu" : [1, 2, 3],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Kamu meminta anakmu untuk membantu" },
+			{ "speaker": "Anak",    "teks": "Aku gabisa, lagi ngerjain tugas" }
+		],
 		"pilihan": [
 			{
 				"teks": "Paksa anak membantu",
@@ -179,34 +212,38 @@
 				"mental": -1
 			},
 			{
-				"teks": "Ajak dengan pendekatan santai",
+				"teks": "Minta dia membantu sedikit",
 				"point_tambah": ["tanggung_jawab"],
 				"point_kurang": ["kemalasan"],
-				"mood": 1,
+				"mood": -1,
 				"mental": 1
 			}
 		]
 	},
 	{
-		"id": "anak_iri_keluarga_lengkap",
-		"nama": "Anak Iri Melihat Teman dengan Keluarga Lengkap",
-		"deskripsi": "Anak terlihat sedih setelah pulang dari rumah temannya.",
-		"fase": [1],
-		"waktu" : [2],
+		"id": "anak_butuh_barang",
+		"nama": "Anak bilang ada yang harus dibawa besok",
+		"deskripsi": "Anak Seperti ingin bilang sesuatu",
+		"fase": [1, 2],
+		"waktu" : [3],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Anakmu datang sambil ragu ragu" },
+			{ "speaker": "Anak",    "teks": "Uhh besok aku disuruh bawa barang, tapi ternyata kita gapunya" }
+		],
 		"pilihan": [
 			{
-				"teks": "Abaikan, anggap hal biasa",
-				"point_tambah": [],
+				"teks": "Ayo Ikut Beli Keluar",
+				"point_tambah": ["tanggung_jawab"],
 				"point_kurang": [],
-				"mood": -1,
-				"mental": -1
+				"mood": 0,
+				"mental": 0
 			},
 			{
-				"teks": "Hibur dan yakinkan anak",
-				"point_tambah": [],
-				"point_kurang": ["tertekan"],
+				"teks": "Kamu dirumah aja, biar dibelikan",
+				"point_tambah": ["dimanjakan"],
+				"point_kurang": ["tanggung_jawab"],
 				"mood": 1,
-				"mental": 1
+				"mental": 0
 			}
 		]
 	},
@@ -216,6 +253,10 @@
 		"deskripsi": "Anak meminta izin untuk menginap di rumah temannya malam ini.",
 		"fase": [2, 3],
 		"waktu" : [2],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Kamu Mendapati ada yang memanggilmu" },
+			{ "speaker": "Anak",    "teks": "Aku ingin kerumah teman dan menginap" }
+		],
 		"pilihan": [
 			{
 				"teks": "Perbolehkan dan bilang untuk jaga diri",
@@ -239,6 +280,10 @@
 		"deskripsi": "Anak meminta izin untuk ikut les pelajaran.",
 		"fase": [1, 2, 3],
 		"waktu" : [1, 2, 3],
+		"dialog": [
+			{ "speaker": "Narator", "teks": "Anakmu ingin mengatakan sesuatu" },
+			{ "speaker": "Anak",    "teks": "Aku ingin ikut les, aku kurang paham kalau hanya pelajaran dari sekolah" }
+		],
 		"pilihan": [
 			{
 				"teks": "Perbolehkan",
