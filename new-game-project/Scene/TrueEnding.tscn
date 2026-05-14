@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtt7p7k5t75ti"]
+[gd_scene load_steps=6 format=3 uid="uid://dtt7p7k5t75ti"]
 
 [ext_resource type="Script" uid="uid://b7l3t7xawatcf" path="res://Scripts/Ending/true_ending.gd" id="1_r6ja1"]
 [ext_resource type="Texture2D" uid="uid://b3vb7n88licjd" path="res://Asset/Ending/True/S935_1.png" id="2_r6ja1"]
+[ext_resource type="AudioStream" uid="uid://dmy0fsupepo5s" path="res://Asset/Music/Limbus Company OST - SAIKAI (Instrumental).mp3" id="3_ttumm"]
+[ext_resource type="Script" uid="uid://bqbefm5d6fpqm" path="res://Scene/Gameplay/audio_stream_player_2d.gd" id="4_22cmb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrxvj"]
 bg_color = Color(0.117647, 0.117647, 0.180392, 1)
@@ -75,3 +77,10 @@ layout_mode = 2
 [node name="Button2" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ttumm")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+script = ExtResource("4_22cmb")

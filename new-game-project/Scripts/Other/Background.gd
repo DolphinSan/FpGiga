@@ -11,7 +11,7 @@ func _ready() -> void:
 	GameState.latar_changed.connect(_on_latar_changed)
 	_update_sprite()
 
-func _on_latar_changed(_latar: String) -> void:
+func _on_latar_changed(_latar: int) -> void:
 	_update_sprite()
 
 func _update_sprite() -> void:

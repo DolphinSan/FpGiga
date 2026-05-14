@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqerdm47mgexa"]
+[gd_scene load_steps=25 format=3 uid="uid://cqerdm47mgexa"]
 
 [ext_resource type="Script" uid="uid://dap3oy8qnqxmk" path="res://Scene/Gameplay/sakit.gd" id="1_1t7rr"]
 [ext_resource type="Texture2D" uid="uid://claf0q08ri1dk" path="res://Asset/Sprite/button.png" id="1_fvp02"]
+[ext_resource type="Script" uid="uid://dhjpgwhoyaay0" path="res://Scripts/Other/info_panel.gd" id="1_mkmef"]
 [ext_resource type="Script" uid="uid://cljkggo3ky2qi" path="res://Scripts/Other/ActionMenu.gd" id="1_ppbdf"]
 [ext_resource type="PackedScene" uid="uid://d2smjqv7l1yx1" path="res://Scene/Gameplay/NurtureMenu.tscn" id="2_kxeoe"]
 [ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="2_ppbdf"]
@@ -11,8 +12,8 @@
 [ext_resource type="Script" uid="uid://b6igp70mrquom" path="res://Scripts/Debug/DebugPanel.gd" id="5_svnnj"]
 [ext_resource type="PackedScene" uid="uid://cmlksdy212qkn" path="res://Scene/Gameplay/LombaStartPanel.tscn" id="6_kbora"]
 [ext_resource type="Script" uid="uid://cgkjcyxwnb28q" path="res://Scripts/Other/araya_sprite.gd" id="8_7n0jt"]
-[ext_resource type="Texture2D" uid="uid://cefygloe5d7te" path="res://icon.svg" id="10_b1sub"]
 [ext_resource type="Script" uid="uid://io8yx6w1tdc5" path="res://Scene/Gameplay/btn_setting.gd" id="11_585hf"]
+[ext_resource type="Texture2D" uid="uid://b40cbly0ha3rd" path="res://Asset/Sprite/image122-removebg-preview.png" id="11_mkmef"]
 [ext_resource type="PackedScene" uid="uid://ckvvqhv5gr6rf" path="res://Scene/Gameplay/DebugPanel.tscn" id="12_wd8of"]
 [ext_resource type="AudioStream" uid="uid://q7ibt5p7pbrp" path="res://Asset/Music/[ LobotomyCorporation OST ]- Neutral01.mp3" id="13_5jyqd"]
 [ext_resource type="Texture2D" uid="uid://mdkokahmngmq" path="res://Asset/Background/MainUi/Story_Ryōshū_and_Araya's_Room_BG.png" id="13_oskc3"]
@@ -54,6 +55,21 @@ expand_margin_top = 12.0
 expand_margin_right = 12.0
 expand_margin_bottom = 12.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkmef"]
+bg_color = Color(0.117647, 0.117647, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 5.0
+expand_margin_right = 8.0
+expand_margin_bottom = 5.0
+
 [node name="MainUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -72,6 +88,7 @@ offset_top = 15.0
 offset_right = 705.0
 offset_bottom = 320.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bdx3w")
+script = ExtResource("1_mkmef")
 
 [node name="Sakit" type="Label" parent="UI/InfoPanel"]
 layout_mode = 0
@@ -114,6 +131,7 @@ theme_override_fonts/font = ExtResource("2_ppbdf")
 text = "Mental - ???"
 
 [node name="Latar Waktu" type="Label" parent="UI/InfoPanel"]
+visible = false
 layout_mode = 0
 offset_left = 150.0
 offset_right = 190.0
@@ -347,12 +365,13 @@ horizontal_alignment = 1
 
 [node name="DescriptionPanel" type="MarginContainer" parent="UI/MarginContainer/ActionMenu"]
 layout_mode = 0
-offset_top = 41.5384
+offset_top = 42.0
 offset_right = 40.0
-offset_bottom = 81.5384
+offset_bottom = 96.0
 
 [node name="DescriptionText" type="VBoxContainer" parent="UI/MarginContainer/ActionMenu/DescriptionPanel"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="Label" type="Label" parent="UI/MarginContainer/ActionMenu/DescriptionPanel/DescriptionText"]
 layout_mode = 2
@@ -363,14 +382,19 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ppbdf")
 
 [node name="DebugLabel" type="Label" parent="UI"]
+visible = false
 offset_right = 323.0
 offset_bottom = 134.0
 script = ExtResource("5_svnnj")
 
 [node name="BtnSetting" type="Button" parent="UI"]
-offset_right = 136.0
-offset_bottom = 136.0
-icon = ExtResource("10_b1sub")
+offset_left = 17.0
+offset_top = 15.0
+offset_right = 112.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("2_ppbdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mkmef")
+icon = ExtResource("11_mkmef")
 script = ExtResource("11_585hf")
 
 [node name="DebugPanel" parent="." instance=ExtResource("12_wd8of")]

@@ -18,33 +18,47 @@ func _ready() -> void:
 		{
 			"image":   "res://Asset/Ending/True/S935_1.png",
 			"speaker": "Narator",
-			"teks":    "placeholder dialog 1",
+			"teks":    "Kamu merawatnya dari kecil",
 			"pilihan": false
 		},
 		{
 			"image":   "res://Asset/Ending/True/S935_1.png",
 			"speaker": "Anak",
-			"teks":    "placeholder dialog 2",
+			"teks":    "%s dengar~~ aku punya teman baru disekolah hihi~" % gender,
+			"pilihan": false
+		},
+		{   
+			"image":   "res://Asset/Ending/True/S935_1.png",
+			"speaker": "Anak",
+			"teks":    "kenapa kamu menangis %s ?" % gender,
+			"pilihan": true,
+			"btn1":    "ini cuma air hujan",
+			"btn2":    "%s sendiri tidak tahu..." % gender,
+		},
+		{
+			"image":   "res://Asset/Ending/True/S935_2.png",
+			"speaker": "Anak",
+			"teks":    "%s, apakah kau benar benar menyangi ku?" % gender,
 			"pilihan": false
 		},
 		{
 			"image":   "res://Asset/Ending/True/S935_2.png",
 			"speaker": "Anak",
-			"teks":    "placeholder pertanyaan ke %s." % gender,
+			"teks":    "Mendengar cerita temanku, aku kadang berfikir apakah cintamu palsu",
 			"pilihan": true,
-			"btn1":    "placeholder respon 1",
-			"btn2":    "placeholder respon 2"
+			"btn1":    "....",
+			"btn2":    "Tentu saja tidak, aku kan %s mu" % gender,
 		},
 		{
-			"image":   "res://Asset/Ending/True/S935_2.png",
+			"image":   "res://Asset/Ending/True/S935_3.png",
 			"speaker": "Narator",
-			"teks":    "placeholder dialog setelah pilihan",
+			"teks":    "kamu mengantarnya, untuk pertamakali jauh darimu",
 			"pilihan": false
 		},
 		{
 			"image":   "res://Asset/Ending/True/S935_3.png",
-			"speaker": "Anak",
-			"teks":    "placeholder dialog terakhir",
+			"speaker": "Narator",
+			"teks":    "Namun kamu tidak bersedih, karena ini bukan perpisahan",
 			"pilihan": false
 		},
 	]

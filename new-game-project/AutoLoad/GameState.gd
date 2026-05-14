@@ -7,6 +7,7 @@ signal hari_changed(hari: int, fase: int)
 signal latar_changed(latar: int)
 signal anak_sakit_changed(sakit: bool)
 signal game_over(ending: int)
+signal bicara_changed(count: int)
 
 # Waktu & Fase 
 var fase: int = 1   # SD(1) SMP (2) SMA (3)

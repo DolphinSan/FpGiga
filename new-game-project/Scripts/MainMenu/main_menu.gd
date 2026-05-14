@@ -7,6 +7,7 @@ extends Node2D
 @onready var btn_exit:      Button = $VBoxContainer/BtnExit
 @onready var label_judul:   Label  = $LabelJudul
 @export var save_slot_scene: PackedScene
+@export var EndingGallery: PackedScene
 
 const GAMEPLAY_SCENE := "res://Scene/Gameplay/MainUI.tscn"
 const ENDING_GALLERY  := "res://Scene/EndingGallery.tscn"
@@ -49,9 +50,10 @@ func _on_setting() -> void:
 	# TODO: buka panel setting
 
 func _on_ending() -> void:
-	print("[MainMenu] Ending Gallery — belum dibuat")
-	# TODO: buka ending gallery
-	# get_tree().change_scene_to_file(ENDING_GALLERY)
+	#get_tree().change_scene_to_file(ENDING_GALLERY)
+	var panel := EndingGallery.instantiate()
+	add_child(panel)
+	
 
 func _on_exit() -> void:
 	print("[MainMenu] Exit")

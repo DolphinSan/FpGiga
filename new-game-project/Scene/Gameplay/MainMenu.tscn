@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csxulgm181fjh"]
+[gd_scene load_steps=19 format=3 uid="uid://csxulgm181fjh"]
 
 [ext_resource type="Script" uid="uid://d1yeu0fjtmiwu" path="res://Scripts/MainMenu/main_menu.gd" id="1_y3a4p"]
 [ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="2_c2hnx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dfn5k5ucdauq0" path="res://Asset/Background/MainMenu/5622dab1b73e1d93e589167be45d12fe.jpg" id="7_06pxh"]
 [ext_resource type="Script" uid="uid://c5eab0qvhrmx1" path="res://Scene/Gameplay/point_light_2d.gd" id="8_ctdw7"]
 [ext_resource type="Texture2D" uid="uid://dygllfm22w8d5" path="res://Asset/Background/MainMenu/RedLine.png" id="10_qboxq"]
+[ext_resource type="PackedScene" uid="uid://dswdydufsl3e" path="res://Scene/EndingGallery.tscn" id="11_hcdwu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6awvc"]
 bg_color = Color(0, 0, 0, 1)
@@ -60,6 +61,7 @@ turbulence_enabled = true
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_y3a4p")
 save_slot_scene = ExtResource("2_qboxq")
+EndingGallery = ExtResource("11_hcdwu")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1261.0

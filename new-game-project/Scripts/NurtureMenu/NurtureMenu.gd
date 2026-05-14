@@ -74,13 +74,13 @@ func _show_description(aksi: int) -> void:
 	desc_panel.visible = true
 	match aksi:
 		GameConstants.Aksi.NURTURE_1:
-			desc_title.text = "AJAK BERBICARA"
+			desc_title.text = ""
 			desc_body.text  = (
-				"Mengobrol dengan anak.\n"
-				+ "Menggali informasi tentang ketertarikan, kondisi, dan kesehatan anak.\n\n"
-				+ "Jika mental anak rusak → sedikit memulihkan mental.\n"
-				+ "Jika anak sakit → membuka opsi Infirmary.\n\n"
-				+ "Klik lagi untuk mengonfirmasi."
+				""
+				+ "Menggali informasi tentang ketertarikan\nkondisi, dan kesehatan anak"
+				+ ""
+				+ ""
+				+ ""
 			)
 		GameConstants.Aksi.NURTURE_2:
 			desc_title.text = "BERI HADIAH"
@@ -101,13 +101,13 @@ func _show_description(aksi: int) -> void:
 				+ "Klik lagi untuk mengonfirmasi."
 			)
 		GameConstants.Aksi.NURTURE_4:
-			desc_title.text = "SURUH BELAJAR"
+			desc_title.text = ""
 			desc_body.text  = (
 				"Menyuruh anak belajar.\n"
 				+ "Menambah poin Akademik & Tanggung Jawab.\n"
-				+ "Mood anak yang baik meningkatkan poin yang didapat.\n\n"
-				+ "⚠ Terlalu sering (2x/hari selama 3 hari) → anak merasa tertekan.\n\n"
-				+ "Klik lagi untuk mengonfirmasi."
+				+ "\n\n"
+				+ ""
+				+ ""
 			)
 		GameConstants.Aksi.NURTURE_5:
 			desc_title.text = "BERSIH-BERSIH"

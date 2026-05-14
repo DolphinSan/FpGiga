@@ -142,10 +142,11 @@ func _try_execute(button: BaseButton, aksi: int) -> void:
 
 
 func _post_nurture1() -> void:
+	GameState.bicara_count += 1
+	GameState.emit_signal("bicara_changed", GameState.bicara_count)
 	_dbg("_post_nurture1 — passion_clue_level: %d | anak_sakit: %s" % [
 		GameState.passion_clue_level, str(GameState.anak_sakit)
 	])
-	GameState.bicara_count += 1
 	_dbg("GameState.bicara_count: %d")
 	var hint := ""
 	if GameState.passion_clue_level > 0:
@@ -160,6 +161,8 @@ func _post_nurture1() -> void:
 	if hint != "":
 		desc_label.text += "\n\n💬 " + hint
 	_refresh_button("infirmary")
+	
+	GameState.emit_signal("ap_changed", GameState.action_point)
 
 
 func _open_lomba_ui() -> void:
@@ -176,13 +179,13 @@ func _show_description(aksi: int) -> void:
 	description_panel.visible = true
 	match aksi:
 		GameConstants.Aksi.REST:
-			title_label.text = "REST"
+			title_label.text = "Jika anak tidak enak badan,\nbisa membantu pemulihan\n"
 			desc_label.text  = (
-				"Beristirahat.\n"
-				+ "Netral — tidak menambah atau mengurangi apapun.\n"
-				+ "Jika anak tidak enak badan, bisa membantu pemulihan.\n\n"
-				+ "⚠ Terlalu sering → menambah kemalasan.\n\n"
-				+ "Klik lagi untuk mengonfirmasi."
+				""
+				+ ""
+				+ ""
+				+ ""
+				+ "Klik lagi untuk mengonfirmasi"
 			)
 		GameConstants.Aksi.RECREATION:
 			title_label.text = "RECREATION  (2 AP)"
@@ -205,11 +208,11 @@ func _show_description(aksi: int) -> void:
 		GameConstants.Aksi.LOMBA:
 			title_label.text = "LOMBA"
 			desc_label.text  = (
-				"Ikutkan anak dalam perlombaan.\n"
-				+ "Menang → +2 poin passion.\n"
-				+ "Kalah  → +1 poin passion.\n\n"
-				+ "⚠ Cabang tidak sesuai passion → merusak mood & mental.\n\n"
-				+ "Klik lagi untuk membuka menu lomba."
+				"Ikutkan anak dalam perlombaan\n"
+				+ "\n"
+				+ ""
+				+ ""
+				+ "Klik lagi untuk membuka menu lomba"
 			)
 
 # Hasil Klik 2

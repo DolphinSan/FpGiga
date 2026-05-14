@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmy0fsupepo5s"
+path="res://.godot/imported/Limbus Company OST - SAIKAI (Instrumental).mp3-34b8ddd768e639638692c261c4ad6bcd.mp3str"
+
+[deps]
+
+source_file="res://Asset/Music/Limbus Company OST - SAIKAI (Instrumental).mp3"
+dest_files=["res://.godot/imported/Limbus Company OST - SAIKAI (Instrumental).mp3-34b8ddd768e639638692c261c4ad6bcd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
