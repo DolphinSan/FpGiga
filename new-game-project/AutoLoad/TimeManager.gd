@@ -56,7 +56,19 @@ func _advance_fase() -> void:
 		GameState.emit_signal("hari_changed", GameState.hari, GameState.fase)
 	else:
 		var ending := EndingManager.calculate()
+		if not GameState.unlocked_endings.has(ending):
+			GameState.unlocked_endings.append(ending)
+
+		GameState.current_ending = ending
 		GameState.emit_signal("game_over", ending)
+		
+		SaveSystem.save_global()
+		SaveSystem.auto_save()
+		
+		if GameState.current_save_slot != -1:
+			SaveSystem.delete_slot(GameState.current_save_slot)
+
+		get_tree().change_scene_to_file("res://Scene/Ending.tscn")
 
 
 func _check_sakit_duration() -> void:

@@ -56,13 +56,13 @@ func _get_sprite_key() -> String:
 
 	# Bahagia = mood GREAT + mental SANGAT_SEHAT
 	if GameState.mood == GameConstants.Mood.GREAT and GameState.mental == GameConstants.Mental.SANGAT_SEHAT:
-		return "bahagia"
+		return "great"
 
 	match GameState.mood:
 		GameConstants.Mood.GREAT:
-			return "great"
+			return "bahagia"
 		GameConstants.Mood.GOOD:
-			return "great"
+			return "bahagia"
 		GameConstants.Mood.BIASA:
 			return "normal"
 		GameConstants.Mood.BAD:

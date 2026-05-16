@@ -49,7 +49,7 @@ func _on_back() -> void:
 	visible = false
 
 func _on_home() -> void:
-	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scene/Gameplay/MainMenu.tscn")
 
 func _save_volume(val: float) -> void:
 	var cfg := ConfigFile.new()

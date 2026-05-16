@@ -116,4 +116,4 @@ func _pilih_2() -> void:
 
 func _selesai() -> void:
 	print("[TrueEnding] Ending selesai — kembali ke main menu")
-	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scene/Gameplay/MainMenu.tscn")

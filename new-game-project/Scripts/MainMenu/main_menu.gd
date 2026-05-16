@@ -13,8 +13,7 @@ const GAMEPLAY_SCENE := "res://Scene/Gameplay/MainUI.tscn"
 const ENDING_GALLERY  := "res://Scene/EndingGallery.tscn"
 
 func _ready() -> void:
-	print("[MainMenu] Continue disabled: ", btn_continue.disabled)
-	print("[MainMenu] Continue modulate: ", btn_continue.modulate)
+	SaveSystem.load_global()
 	label_judul.text = "Unsevering Thread"
 
 	btn_new_game.pressed.connect(_on_new_game)
@@ -26,8 +25,6 @@ func _ready() -> void:
 	var ada_save := SaveSystem.slot_exists(1) or SaveSystem.slot_exists(2) or SaveSystem.slot_exists(0)
 	btn_continue.disabled = not ada_save
 	btn_continue.modulate = Color(1, 1, 1) if ada_save else Color(0.5, 0.5, 0.5)
-
-	print("[MainMenu] Save tersedia: ", ada_save)
 
 func _on_new_game() -> void:
 	var panel := save_slot_scene.instantiate()

@@ -3,6 +3,7 @@ extends Node
 #  SaveSystem ke JSON, 3 slot.
 
 const SAVE_DIR     := "user://saves/"
+const SAVE_GLOBAL := "user://global.save"
 const SAVE_VERSION := 1
 
 signal save_completed(slot: int)
@@ -13,6 +14,7 @@ signal load_failed(slot: int, reason: String)
 # save
 
 func save_game(slot: int) -> void:
+	GameState.current_save_slot = slot
 	_ensure_dir()
 	var data          := GameState.to_dict()
 	data["_version"]  = SAVE_VERSION
@@ -27,9 +29,26 @@ func save_game(slot: int) -> void:
 	file.store_string(JSON.stringify(data, "\t"))
 	file.close()
 	emit_signal("save_completed", slot)
+	
+func save_global() -> void:
 
+	var data := {
+		"unlocked_endings": GameState.unlocked_endings
+	}
+
+	var file := FileAccess.open(
+		"user://global.save",
+		FileAccess.WRITE
+	)
+
+	if file:
+		file.store_string(JSON.stringify(data))
+		file.close()
+		
 # Auto Save
-func auto_save(slot: int = 0) -> void:
+func auto_save(slot: int = -1) -> void:
+	if slot == -1:
+		slot = GameState.current_save_slot
 	_ensure_dir()
 	var data          := GameState.to_dict()
 	data["_version"]  = SAVE_VERSION
@@ -44,6 +63,7 @@ func auto_save(slot: int = 0) -> void:
 # Load
 
 func load_game(slot: int) -> void:
+	GameState.current_save_slot = slot
 	if not FileAccess.file_exists(_path(slot)):
 		emit_signal("load_failed", slot, "Save tidak ditemukan.")
 		return
@@ -67,6 +87,33 @@ func load_game(slot: int) -> void:
 
 	GameState.from_dict(data)
 	emit_signal("load_completed", slot)
+	
+func load_global() -> void:
+
+	if not FileAccess.file_exists("user://global.save"):
+		return
+
+	var file := FileAccess.open(
+		"user://global.save",
+		FileAccess.READ
+	)
+
+	if file == null:
+		return
+
+	var json := JSON.new()
+
+	if json.parse(file.get_as_text()) != OK:
+		return
+
+	var data: Dictionary = json.get_data()
+
+	GameState.unlocked_endings.clear()
+
+	for e in data.get("unlocked_endings", []):
+		GameState.unlocked_endings.append(int(e))
+
+	file.close()
 
 #Slot Info
 

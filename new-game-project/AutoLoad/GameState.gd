@@ -9,6 +9,11 @@ signal anak_sakit_changed(sakit: bool)
 signal game_over(ending: int)
 signal bicara_changed(count: int)
 
+# Ending
+var current_ending: int = GameConstants.Ending.NONE
+var unlocked_endings: Array[int] = []
+var current_save_slot := -1
+
 # Waktu & Fase 
 var fase: int = 1   # SD(1) SMP (2) SMA (3)
 var hari: int           = 1
@@ -160,6 +165,7 @@ func to_dict() -> Dictionary:
 		"sakit_diketahui": sakit_diketahui,
 		"hari_sakit":      hari_sakit,
 		"bicara_count":    bicara_count,
+		"unlocked_endings": unlocked_endings,
 	}
 
 
@@ -201,6 +207,10 @@ func from_dict(d: Dictionary) -> void:
 	lomba_cabang        = d.get("lomba_cabang",        GameConstants.Passion.BELUM_DIKETAHUI)
 	lomba_sudah_selesai = d.get("lomba_sudah_selesai", false)
 	lomba_hasil_menang  = d.get("lomba_hasil_menang",  false)
+
+	unlocked_endings.clear()
+	for e in d.get("unlocked_endings", []):
+		unlocked_endings.append(int(e))
 
 	var raw_events: Array = d.get("random_events_triggered", [])
 	random_events_triggered.clear()

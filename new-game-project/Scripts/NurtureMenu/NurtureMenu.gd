@@ -78,44 +78,30 @@ func _show_description(aksi: int) -> void:
 			desc_body.text  = (
 				""
 				+ "Menggali informasi tentang ketertarikan\nkondisi, dan kesehatan anak"
-				+ ""
-				+ ""
-				+ ""
 			)
 		GameConstants.Aksi.NURTURE_2:
-			desc_title.text = "BERI HADIAH"
+			desc_title.text = ""
 			desc_body.text  = (
-				"Memberikan hadiah kepada anak.\n"
-				+ "Menambah mood anak.\n"
-				+ "Bonus jika dilakukan setelah belajar/bersih-bersih → mood + mental naik.\n\n"
-				+ "⚠ Terlalu sering (2x/hari selama 3 hari) → menambah sifat dimanjakan.\n\n"
-				+ "Klik lagi untuk mengonfirmasi."
+				"Memberikan hadiah kepada anak\n"
+				+ "Menambah mood anak"
 			)
 		GameConstants.Aksi.NURTURE_3:
-			desc_title.text = "BERI PERHATIAN"
+			desc_title.text = ""
 			desc_body.text  = (
-				"Memberikan perhatian kepada anak.\n"
-				+ "Menambah mood & sedikit memulihkan mental.\n"
-				+ "Jika mental rusak → efek pemulihan lebih besar.\n\n"
-				+ "⚠ Terlalu sering (2x/hari selama 3 hari) → menambah sifat dimanjakan.\n\n"
-				+ "Klik lagi untuk mengonfirmasi."
+				"Memberikan perhatian kepada anak\n"
+				+ "Menambah mood & sedikit memulihkan mental"
 			)
 		GameConstants.Aksi.NURTURE_4:
 			desc_title.text = ""
 			desc_body.text  = (
-				"Menyuruh anak belajar.\n"
-				+ "Menambah poin Akademik & Tanggung Jawab.\n"
-				+ "\n\n"
-				+ ""
-				+ ""
+				"Menyuruh anak belajar\n"
+				+ "Menambah poin Akademik & Tanggung Jawab"
 			)
 		GameConstants.Aksi.NURTURE_5:
-			desc_title.text = "BERSIH-BERSIH"
+			desc_title.text = ""
 			desc_body.text  = (
-				"Menyuruh anak membereskan rumah.\n"
-				+ "Menambah poin Tanggung Jawab.\n\n"
-				+ "⚠ Terlalu sering (2x/hari selama 3 hari) → anak merasa tertekan.\n\n"
-				+ "Klik lagi untuk mengonfirmasi."
+				"Menyuruh anak membereskan rumah\n"
+				+ "Menambah poin Tanggung Jawab"
 			)
 
 # Hasil Klik 2
@@ -143,7 +129,7 @@ func _show_hasil(aksi: int) -> void:
 			desc_title.text = "BERSIH-BERSIH ✓"
 			desc_body.text  = "Poin Tanggung Jawab bertambah."
 
-	desc_body.text += "\n\nKlik lagi untuk menutup menu."
+	desc_body.text += ""
 
 # Passion Hint
 func _get_passion_hint() -> String:

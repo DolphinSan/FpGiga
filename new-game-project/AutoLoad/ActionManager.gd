@@ -1,6 +1,5 @@
 extends Node
 
-# Kembalikan false jika AP tidak cukup.
 func execute(aksi: int) -> bool:
 	if not _use_ap(aksi):
 		return false
@@ -60,10 +59,10 @@ func _cost(aksi: int) -> int:
 		return GameConstants.AP_COST_SPECIAL
 	return GameConstants.AP_COST_DEFAULT
 
-# Nurture 1 — Ajak Berbicara 
-
 func _nurture1() -> void:
 	GameState.bicara_count += 1
+	GameState.emit_signal("bicara_changed", GameState.bicara_count)
+	print("[ActionManager] bicara_count: ", GameState.bicara_count)
  
 	if GameState.passion != GameConstants.Passion.BELUM_DIKETAHUI:
 		GameState.passion_clue_level = min(GameState.passion_clue_level + 1, 3)
@@ -77,11 +76,6 @@ func _nurture1() -> void:
 	if GameState.mental == GameConstants.Mental.RUSAK:
 		GameState.add_mental(1)
 
-	# UI harus membaca GameState.anak_sakit setelah aksi ini
-	# untuk menampilkan opsi Infirmary
-
-# ── Nurture 2 — Beri Hadiah ─────────────────────────────
-
 func _nurture2() -> void:
 	if _prev_was_task():
 		# Chain bonus: sesudah belajar/bersih
@@ -89,8 +83,6 @@ func _nurture2() -> void:
 		GameState.add_mental(1)
 	else:
 		GameState.add_mood(1)
-
-# ── Nurture 3 — Beri Perhatian ──────────────────────────
 
 func _nurture3() -> void:
 	if _prev_was_task():
@@ -105,21 +97,16 @@ func _nurture3() -> void:
 	if GameState.mental == GameConstants.Mental.RUSAK:
 		GameState.add_mental(2)
 
-# ── Nurture 4 — Suruh Belajar ───────────────────────────
 
 func _nurture4() -> void:
 	var m := GameState.get_mood_multiplier()
 	GameState.point_akademik       += int(1 * m)
 	GameState.point_tanggung_jawab += int(1 * m)
 
-# ── Nurture 5 — Suruh Bersih-Bersih ────────────────────
-
 func _nurture5() -> void:
 	var m := GameState.get_mood_multiplier()
 	# Tanggung jawab lebih kecil dari N4
 	GameState.point_tanggung_jawab += max(1, int(0.75 * m))
-
-# ── Rest ────────────────────────────────────────────────
 
 func _rest() -> void:
 	# Chain: sembuhkan jika anak tidak enak badan (bukan parah)
@@ -130,8 +117,6 @@ func _rest() -> void:
 		print("[ActionManager] Anak sembuh via Rest")
 		GameState.emit_signal("anak_sakit_changed", false)
 
-# ── Recreation ──────────────────────────────────────────
-
 func _recreation() -> void:
 	if _prev_was_task():
 		# Chain bonus
@@ -141,7 +126,6 @@ func _recreation() -> void:
 		# Mood lebih besar dari N2
 		GameState.add_mood(2)
 
-# ── Infirmary ───────────────────────────────────────────
 
 func _infirmary() -> void:
 	GameState.anak_sakit      = false

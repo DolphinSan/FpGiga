@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtt7p7k5t75ti"]
+[gd_scene load_steps=6 format=3 uid="uid://bgoa8iashqvrf"]
 
-[ext_resource type="Script" uid="uid://b7l3t7xawatcf" path="res://Scripts/Ending/true_ending.gd" id="1_r6ja1"]
+[ext_resource type="Script" uid="uid://b4bptg8gavd0t" path="res://Scripts/Ending/True.gd" id="1_ttumm"]
 [ext_resource type="Texture2D" uid="uid://b3vb7n88licjd" path="res://Asset/Ending/True/S935_1.png" id="2_r6ja1"]
-[ext_resource type="AudioStream" uid="uid://dmy0fsupepo5s" path="res://Asset/Music/Limbus Company OST - SAIKAI (Instrumental).mp3" id="3_ttumm"]
+[ext_resource type="AudioStream" uid="uid://bsuxg7h5khh7k" path="res://Asset/Music/Mili - SAIKAI [Limbus Company].mp3" id="3_ttumm"]
 [ext_resource type="Script" uid="uid://bqbefm5d6fpqm" path="res://Scene/Gameplay/audio_stream_player_2d.gd" id="4_22cmb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrxvj"]
@@ -23,7 +23,7 @@ expand_margin_right = 12.0
 expand_margin_bottom = 12.0
 
 [node name="TrueEnding" type="Node2D"]
-script = ExtResource("1_r6ja1")
+script = ExtResource("1_ttumm")
 
 [node name="Ending" type="TextureRect" parent="."]
 offset_left = -80.0

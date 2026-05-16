@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dswdydufsl3e"]
+[gd_scene load_steps=5 format=3 uid="uid://dswdydufsl3e"]
 
+[ext_resource type="Script" uid="uid://c2lfsv3ad3qum" path="res://Scripts/Ending/ending_gallery.gd" id="1_3h3mr"]
 [ext_resource type="FontFile" uid="uid://b7fsdi1n8tkyq" path="res://Asset/Font/Limbus-Demo.otf" id="1_6kb57"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h3mr"]
@@ -38,8 +39,10 @@ expand_margin_bottom = 5.0
 [node name="EndingGallery" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_3h3mr")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 244.0
 offset_top = 258.0
 offset_right = 480.0
@@ -79,8 +82,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_6kb57")
 theme_override_styles/normal = SubResource("StyleBoxFlat_b5xet")
-text = "Ending 1
-"
+text = "Locked"
 
 [node name="BtnEnding2" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -101,7 +103,8 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_6kb57")
 theme_override_styles/normal = SubResource("StyleBoxFlat_b5xet")
-text = "Ending 4"
+text = "Locked
+"
 
 [node name="BtnEnding5" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)

@@ -1,43 +1,70 @@
 extends Node
-#  EndingManager, menghitung ending berdasarkan semua stat.
-#  Autoload. Hanya membaca GameState.
 
 func calculate() -> int:
-	# ── Depresi ─────────────────────────────────────────
-	if GameState.mental == GameConstants.Mental.RUSAK and GameState.point_tertekan >= 15:
+	if (GameState.point_dimanjakan <= 25 and
+		GameState.point_tertekan >= 40 and
+		GameState.point_kemalasan <= 25 and
+		GameState.point_tanggung_jawab > 50 and
+		GameState.point_akademik > 50 and
+		GameState.point_passion >= 50 and
+		GameState.mood == GameConstants.Mood.AWFUL and
+		GameState.mental == GameConstants.Mental.RUSAK):
 		return GameConstants.Ending.DEPRESI
 
-	# ── Memberontak ─────────────────────────────────────
-	if GameState.point_dimanjakan >= 15:
-		return GameConstants.Ending.MEMBERONTAK
-	if GameState.point_tertekan >= 12 and GameState.point_tanggung_jawab < 8:
+	if (GameState.point_dimanjakan <= 25 and 
+		GameState.point_tertekan >= 25 and 
+		GameState.point_kemalasan <= 25 and
+		GameState.point_tanggung_jawab >= 100 and
+		GameState.point_akademik >= 100 and
+		GameState.point_passion <= 25 and
+		GameState.mood <= GameConstants.Mood.BIASA):
 		return GameConstants.Ending.MEMBERONTAK
 
-	# ── Pemalas ─────────────────────────────────────────
-	if GameState.point_kemalasan >= 15:
+	if (GameState.point_dimanjakan >= 50 and 
+		GameState.point_tertekan <= 25 and 
+		GameState.point_kemalasan >= 50 and
+		GameState.point_tanggung_jawab < 100 and
+		GameState.point_akademik < 100 and
+		GameState.point_passion < 50):
 		return GameConstants.Ending.PEMALAS
 
-	# ── True Ending — Mandiri & Bahagia ─────────────────
-	var seimbang: bool = (
-		GameState.point_tanggung_jawab >= 15
-		and GameState.mental >= GameConstants.Mental.BIASA
-		and GameState.point_dimanjakan < 8
-		and GameState.point_tertekan   < 8
-		and GameState.point_kemalasan  < 8
-	)
-	if seimbang:
-		return GameConstants.Ending.MANDIRI_BAHAGIA
-
-	# ── Sukses Passion ──────────────────────────────────
-	if GameState.point_passion >= 10 and GameState.lomba_hasil_menang:
+	if (GameState.point_dimanjakan <= 25 and 
+		GameState.point_tertekan <= 25 and 
+		GameState.point_kemalasan <= 25 and
+		GameState.point_tanggung_jawab >= 100 and
+		GameState.point_passion >= 75 and
+		GameState.mood >= GameConstants.Mood.BIASA):
 		return GameConstants.Ending.SUKSES_PASSION
 
-	# ── Sukses Akademik ─────────────────────────────────
-	if GameState.point_akademik >= 15:
+	if (GameState.point_dimanjakan <= 25 and 
+		GameState.point_tertekan <= 25 and 
+		GameState.point_kemalasan <= 25 and
+		GameState.point_tanggung_jawab >= 100 and
+		GameState.point_akademik >= 150 and
+		GameState.point_passion >= 0 and
+		GameState.mood >= GameConstants.Mood.BIASA and
+		GameState.mental >= GameConstants.Mental.BIASA):
 		return GameConstants.Ending.SUKSES_AKADEMIK
 
-	return GameConstants.Ending.PEMALAS
+	if (GameState.point_dimanjakan <= 10 and 
+		GameState.point_tertekan <= 10 and 
+		GameState.point_kemalasan <= 10 and
+		GameState.point_tanggung_jawab >= 100 and
+		GameState.point_akademik >= 150 and
+		GameState.point_passion >= 75 and
+		GameState.mood == GameConstants.Mood.GREAT and
+		GameState.mental == GameConstants.Mental.SANGAT_SEHAT):
+		return GameConstants.Ending.MANDIRI_BAHAGIA
+		
+	var point_buruk = GameState.point_dimanjakan + GameState.point_tertekan + GameState.point_kemalasan
+	var point_baik  = GameState.point_akademik + GameState.point_passion + GameState.point_tanggung_jawab
+	
+	if point_baik > point_buruk:
+		return GameConstants.Ending.NORMAL
+	elif point_buruk > point_baik:
+		return GameConstants.Ending.NORMAL_TIDAK_JELAS
 
+	return GameConstants.Ending.PEMALAS
 
 # debug
 func get_ending_label(ending: int) -> String:

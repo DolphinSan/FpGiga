@@ -44,7 +44,7 @@ func _setup_info() -> void:
 	_sakit_terdeteksi = GameState.sakit_diketahui
 
 	if _sakit_terdeteksi:
-		label_sakit.text    = "🤒 Anak terlihat tidak sehat hari ini."
+		label_sakit.text    = "Anak terlihat tidak sehat hari ini."
 		label_sakit.visible = true
 	else:
 		label_sakit.visible = false
@@ -68,9 +68,7 @@ func _tampilkan_konfirmasi_sakit() -> void:
 	btn_mulai.disabled   = true
 	btn_batal.disabled   = true
 	label_sakit_msg.text = (
-		"Anak terlihat tidak sehat.\n"
-		+ "Tetap ikutkan lomba berisiko memperburuk kondisinya.\n\n"
-		+ "Apa yang akan kamu lakukan?"
+		"Anak terlihat tidak sehat"
 	)
 
 func _on_tetap_ikut() -> void:
@@ -112,10 +110,10 @@ func _tampilkan_hasil(hasil: Dictionary) -> void:
 	label_info.text = teks
 
 	# Tombol tutup
-	btn_mulai.text    = "Tutup"
-	btn_mulai.visible = true
-	btn_mulai.pressed.disconnect(_on_mulai_diklik)
-	btn_mulai.pressed.connect(func():
+	var btn_tutup := Button.new()
+	btn_tutup.text = "Tutup"
+	$Panel.add_child(btn_tutup)
+	btn_tutup.pressed.connect(func():
 		emit_signal("lomba_selesai", hasil)
 		queue_free()
 	)

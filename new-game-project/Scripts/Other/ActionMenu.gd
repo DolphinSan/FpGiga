@@ -188,21 +188,18 @@ func _show_description(aksi: int) -> void:
 				+ "Klik lagi untuk mengonfirmasi"
 			)
 		GameConstants.Aksi.RECREATION:
-			title_label.text = "RECREATION  (2 AP)"
+			title_label.text = "Aktivitas rekreasi bersama anak(2 AP)"
 			desc_label.text  = (
-				"Aktivitas rekreasi bersama anak.\n"
+				""
 				+ "Menambah mood anak.\n"
-				+ "Bonus jika dilakukan setelah belajar/bersih-bersih.\n\n"
 				+ "Hanya tersedia di hari libur.\n\n"
 				+ "Klik lagi untuk mengonfirmasi."
 			)
 		GameConstants.Aksi.INFIRMARY:
-			title_label.text = "INFIRMARY  (2 AP)"
+			title_label.text = "Bawa anak ke dokter"
 			desc_label.text  = (
-				"Bawa anak ke dokter.\n"
+				""
 				+ "Menyembuhkan kondisi sakit anak.\n\n"
-				+ "Hanya tersedia setelah Ajak Berbicara\n"
-				+ "dan anak terlihat sakit.\n\n"
 				+ "Klik lagi untuk mengonfirmasi."
 			)
 		GameConstants.Aksi.LOMBA:
@@ -385,6 +382,6 @@ func _exit_tree() -> void:
 func _on_game_over(ending: int) -> void:
 	_dbg("Game over → ending: " + str(ending))
 	if ending == GameConstants.Ending.MANDIRI_BAHAGIA:
-		get_tree().change_scene_to_file("res://Scene/TrueEnding.tscn")
+		get_tree().change_scene_to_file("res://Scene/Ending.tscn")
 	else:
 		get_tree().change_scene_to_file("res://Scene/Ending.tscn")

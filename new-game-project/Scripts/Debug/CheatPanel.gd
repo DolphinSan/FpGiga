@@ -79,6 +79,7 @@ func _on_skip_libur() -> void:
 
 	if next_hari > GameState.hari_max:
 		print("[DebugCheat] Tidak ada hari libur lagi di fase ini")
+		TimeManager._advance_fase()
 		return
 
 	GameState.hari          = next_hari
